@@ -1,0 +1,199 @@
+// Nav Function
+
+.navCont {
+    background-color: #20141D;
+
+    .nav {
+        display: flex;
+        width: 90%;
+        justify-content: space-between;
+        margin: 0 auto;
+        
+        h1 {
+            font-family: Poppins;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 36px;
+            line-height: 54px;
+            color: #FE7A7C;
+        }
+
+        p {
+            font-family: Poppins;
+            font-style: normal;
+            font-weight: 300;
+            font-size: 14px;
+            line-height: 21px;
+            color: #ffffff;
+        }
+    }
+}
+
+// Header Function
+
+.headerDash {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 48px;
+    line-height: 72px;
+    text-align: center;
+    color: #20141D;
+    margin-top: 1%;
+}
+
+
+
+
+// Board Function
+
+.boardContainer {
+    max-width: 100%;
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 10%;
+    .firstList {
+        display: flex;
+        justify-content: center;
+
+        .board1 {
+            width: 100%;
+            background: #20141D;
+            border-radius: 10px;
+            padding: 5%;
+            text-align: center;
+            margin: 1%;
+            h1 {
+                color: #FE7A7C;
+                font-family: Poppins;
+                font-style: normal;
+                font-weight: bold;
+                font-size: 24px;
+                line-height: 36px;
+                margin-bottom: 20%;
+            }
+
+            p {
+                font-family: Poppins;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 16px;
+                line-height: 24px;
+                color: #FE7A7C;
+
+            }
+        }
+
+        .board2 {
+            width: 100%;
+                margin: 1%;
+                background: #20141D;
+                border-radius: 10px;
+                padding: 5%;
+                text-align: center;
+                h1 {
+                    color: #FE7A7C;
+                    font-family: Poppins;
+                    font-style: normal;
+                    font-weight: bold;
+                    font-size: 24px;
+                    line-height: 36px;
+                    margin-bottom: 20%;
+                }
+    
+                p {
+                    font-family: Poppins;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 16px;
+                    line-height: 24px;
+                    color: #FE7A7C;
+                }
+        }
+    }
+
+    .secondList {
+        display: flex;
+        justify-content: center;
+        margin-top: 3%;
+
+        .board3 {
+            width: 100%;
+            background: #20141D;
+            border-radius: 10px;
+            padding: 5%;
+            text-align: center;
+            margin: 1%;
+            h1 {
+                color: #FE7A7C;
+                font-family: Poppins;
+                font-style: normal;
+                font-weight: bold;
+                font-size: 24px;
+                line-height: 36px;
+                margin-bottom: 20%;
+            }
+
+            p {
+                font-family: Poppins;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 16px;
+                line-height: 24px;
+                color: #FE7A7C;
+
+            }
+        }
+
+        .board4 {
+            width: 100%;
+            margin: 1%;
+            background: #20141D;
+            border-radius: 10px;
+            padding: 5%;
+            text-align: center;
+            
+            h1 {
+                color: #FE7A7C;
+                font-family: Poppins;
+                font-style: normal;
+                font-weight: bold;
+                font-size: 24px;
+                line-height: 36px;
+                margin-bottom: 20%;
+            }
+
+            p {
+                font-family: Poppins;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 16px;
+                line-height: 24px;
+                color: #FE7A7C;
+            }
+        }
+    }
+}
+
+// Footer Function
+
+.footerCont {
+    background: #20141D;
+    display: flex;
+    margin-top: 30%;    
+
+    footer {
+        display: flex;
+        margin: 0 auto;
+        
+        p {
+            font-family: Open Sans;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 16px;
+            line-height: 22px;
+            color: #FFFFFF;
+            margin: 10%;
+        }
+    }
+}

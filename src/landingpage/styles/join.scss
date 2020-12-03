@@ -1,0 +1,24 @@
+.join {
+    .reg {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin: 0 auto;
+        .p{
+            border: solid;
+            text-decoration: none;
+            width: 12%;
+            font-family: 'Open Sans';
+            font-style: normal;
+            font-weight: bold;
+            font-size: 16px;
+            line-height: 22px;
+            text-align: center;
+            color: white;
+            background: #20141D;
+            border-radius: 10px;
+            padding: 10px;
+        }
+    }
+    
+}

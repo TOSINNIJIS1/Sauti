@@ -1,0 +1,118 @@
+.listContainer { 
+    display: flex;
+    height: 100vh;
+
+    .left {
+        width: 30vw;
+        background: #20141D;
+
+        h1 {
+            color: #FE7A7C;
+            font-family: Poppins;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 48px;
+            line-height: 72px;
+            width: 80%;
+            margin: 0 auto;
+            margin-top: 10%;
+        }
+
+        hr {
+            border-bottom: 3px solid #FFFFFF;
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        h3 {
+            width: 80%;
+            margin: 0 auto;
+            color: #FE7A7C;
+            font-family: Poppins;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 24px;
+            line-height: 36px;
+            margin-top: 5%;
+        }
+
+        nav {
+            margin-top: 30%;
+            h4 {
+                width: 65%;
+                margin: 0 auto;
+                font-family: Poppins;
+                font-style: normal;
+                font-weight: bold;
+                font-size: 24px;
+                line-height: 36px;
+                color: #FE7A7C;
+                margin-top: 5%;
+            }
+            h4:hover {
+                color: white;
+            }
+        }
+
+        p {
+            position: fixed;
+            color: #FE7A7C;
+            font-family: Poppins;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 18px;
+            bottom: 0;
+            margin: 0 auto;
+            margin-left: 3%;
+        }
+    }
+
+    .right {
+        width: 70vw;
+
+        .card {
+            border: 2px solid #20141D;
+            border-radius: 5px;            
+            // width: 80%;
+            margin: 0 auto;
+            margin-top: 10%;
+
+            .image {
+                // display: flex;
+
+
+                    .h1 {
+                        border: solid red;
+                        // width: 100%;
+                        // display: flex;
+                        // text-align: center;
+                        // font-family: Poppins;
+                        // font-style: normal;
+                        // font-weight: bold;
+                        // font-size: 18px;
+                        // line-height: 27px;
+                        // color: #20141D;
+                        // margin: 0 auto;
+
+                        .category {
+                            margin-right: 5%;
+                            
+                        }
+
+                        // .price {
+
+                        // }
+                }
+            }
+            
+            button {
+                color: #FFFFFF;
+                font-family: Open Sans;
+                font-style: normal;
+                font-weight: bold;
+                font-size: 16px;
+                line-height: 22px;
+            }
+        }
+    }
+}

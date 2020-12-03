@@ -1,0 +1,34 @@
+.servicesContainer {
+    display: flex;
+    margin: 1%;
+    width: 60%;
+    margin-left: 26%;
+    margin-top: 10%;
+
+    .mobile, .trading, .market {        
+        width: 33%;
+        
+
+        p {
+            font-family: Open Sans;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 21.79px;
+            letter-spacing: 0em;
+            width: 80%;
+
+        }
+
+        h1 {
+            font-size: 18px;
+            font-size: 18px;
+            font-weight: 700;
+            font-style: normal;
+            line-height: 27px;
+            font-family: Poppins;
+        }
+    }
+
+    
+}

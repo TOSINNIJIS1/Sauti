@@ -1,0 +1,134 @@
+.productCont {
+    display: flex;
+    height: 100vh;
+
+    .left {
+        width: 30vw;
+        background: #20141D;
+
+        h1 {
+            color: #FE7A7C;
+            font-family: Poppins;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 48px;
+            line-height: 72px;
+            width: 80%;
+            margin: 0 auto;
+            margin-top: 10%;
+        }
+
+        hr {
+            border-bottom: 3px solid #FFFFFF;
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        h3 {
+            width: 80%;
+            margin: 0 auto;
+            color: #FE7A7C;
+            font-family: Poppins;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 24px;
+            line-height: 36px;
+            margin-top: 5%;
+        }
+
+        nav {
+            margin-top: 30%;
+            h4 {
+                width: 65%;
+                margin: 0 auto;
+                font-family: Poppins;
+                font-style: normal;
+                font-weight: bold;
+                font-size: 24px;
+                line-height: 36px;
+                color: #FE7A7C;
+                margin-top: 5%;
+            }
+            h4:hover {
+                color: white;
+            }
+        }
+
+        p {
+            position: fixed;
+            color: #FE7A7C;
+            font-family: Poppins;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 18px;
+            bottom: 0;
+            margin: 0 auto;
+            margin-left: 3%;
+        }
+    }
+
+    .right {
+        width: 70vw;
+        border: solid;
+
+        form {
+            display: flex;
+            flex-direction: column;
+            width: 80%;
+            margin: 0 auto;
+            margin-top: 9%;
+
+            label {
+                font-family: Open Sans;
+                font-style: normal;
+                font-weight: bold;
+                font-size: 16px;
+                line-height: 22px;
+                color: #191C48
+            }
+
+            input {
+                box-sizing: border-box;
+                border-radius: 5px;
+                background: #FFFFFF;
+                font-size: 16px;
+                margin-bottom: 2%;
+
+            }
+
+            select {
+                border: 2px solid #191C48;
+                box-sizing: border-box;
+                border-radius: 5px;
+                font-size: 16px;
+                margin-bottom: 2%;
+            }
+
+            .upload {
+                margin-left: 2%;
+                margin-bottom: 10%;
+            }
+
+            button {
+                padding: 1%;
+                color: #FFFFFF;
+                font-family: Open Sans;
+                font-style: normal;
+                font-weight: bold;
+                font-size: 16px;
+                line-height: 22px;
+                border-radius: 10px;
+            }
+
+            button:active {
+                border: solid;
+            }
+
+            button:hover {
+                background-color: #191C48;
+            }
+
+
+        }
+    }
+}
