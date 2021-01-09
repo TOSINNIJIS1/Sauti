@@ -111,6 +111,7 @@
 
             button {
                 padding: 1%;
+                background-color: #20141D;
                 color: #FFFFFF;
                 font-family: Open Sans;
                 font-style: normal;
@@ -118,14 +119,14 @@
                 font-size: 16px;
                 line-height: 22px;
                 border-radius: 10px;
-            }
 
-            button:active {
-                border: solid;
-            }
+                &[disabled] {
+                    opacity: 0.4;
+                }
 
-            button:hover {
-                background-color: #191C48;
+                &[enabled] {
+                    opacity: unset;
+                }
             }
 
 

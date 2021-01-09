@@ -1,13 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './style/product.scss';
-import axios from 'axios';
+// import axios from 'axios';
 import Upload from './image/upload.png';
+import {Link} from 'react-router-dom'
 
 let CATEGORIES = ['Clothes', 'Shoes', 'Jewelries']
 class ProductInfo extends React.Component {
-
-    
-
     state = {
         location: '',
         category: '',
@@ -25,6 +23,7 @@ class ProductInfo extends React.Component {
             ))
         }
     }
+
 
     onSubmit = e => {
         e.preventDefault()
@@ -59,13 +58,27 @@ class ProductInfo extends React.Component {
     
                     <h3> Add Product </h3> 
     
-                    <nav>
+                    <nav style={{cursor: 'pointer'}}>
+                    <Link to='/'>
                         <h4> Home </h4>
+                    </Link>
+
+                    <Link to='/market'>
                         <h4> Market Price </h4>
+                    </Link>
+
+                    <Link to='/list'>
                         <h4> Listings </h4>
-                        <h4> Profile </h4>
-                        <h4> Add Product </h4>
-                    </nav>
+                    </Link>
+
+                    <Link to='/profile'>
+                        <h4 style={{color: 'white'}} link to='/profile'> Profile </h4>
+                    </Link>
+                    
+                    <Link to='/add'>
+                        <h4 link to='product'> Add Product </h4>
+                    </Link>
+                </nav>
     
                     <p> Sign Out </p> 
                 </div>
@@ -111,7 +124,7 @@ class ProductInfo extends React.Component {
                             />
                         </div>
     
-                        <button onClick={this.imageUpload} > Add Product </button>
+                        <button onClick={this.imageUpload} disabled > Add Product </button>
                     </form>
                 </div>
             </div>
