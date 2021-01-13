@@ -6,9 +6,7 @@
     font-family: 'Poppins', sans-serif;
     color: white;
 
-    LINK, li {
-        list-style-type: none;
-    }
+    
 
     .left {
         .landingLogo {
@@ -33,13 +31,79 @@
     }
 }
 
-.bb {
-    position: relative;
-    max-width: 100%;
-    width: 100%;
-    height: 520px;
-    background: url('../rec.png');
-    background-repeat: no-repeat;
-    background-size: cover;
+.h4 {
+    color: black; 
+    font-family: 'Poppins';
+    font-size: 24px;
+    line-height: 36px; 
+    text-align: center; 
+    font-weight: 700;
 }
 
+.bb {
+    width: 100%;
+    height: 511px;
+    background: url('../assets/Rectangle\ 36.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0 100%;
+}
+
+
+@media only screen and (max-width: 600px) {
+    .landingNav {
+        margin: 0 auto;
+        max-width: 100%;
+        display: flex;
+        justify-content: space-between;
+        font-family: 'Poppins', sans-serif;
+    
+        .left {
+            .landingLogo {
+                font-weight: 700;
+                font-size: 24px;
+                font-style: normal;
+                line-height: 36px;
+                color: #FE7A7C;
+            }
+        }
+    
+        .right {
+            display: flex;
+            justify-content: space-around;
+            width: 20%;
+            text-decoration: none;
+    
+            .login {
+                text-decoration: none;
+                color: white;
+                font-size: 12px;
+                line-height: 18px;
+            }
+
+            .about {
+                display: none;
+            }
+        }
+
+
+    }
+
+    .bb {
+        min-width: 100%;
+        width: 100%;
+        height: 296px;
+        background: url('../assets/Rectangle\ 35.svg');
+        background-repeat: no-repeat 50% 100%;
+        background-size: cover;
+        background-position: 90% 100%;
+        // border: solid red;
+    }
+
+    .h4 {
+        font-size: 16px;
+        line-height: 24px;
+        font-style: normal;
+        font-weight: bold;
+    }
+}

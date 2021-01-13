@@ -72,11 +72,11 @@ class ProductInfo extends React.Component {
                     </Link>
 
                     <Link to='/profile'>
-                        <h4 style={{color: 'white'}} link to='/profile'> Profile </h4>
+                        <h4 link to='/profile'> Profile </h4>
                     </Link>
                     
-                    <Link to='/add'>
-                        <h4 link to='product'> Add Product </h4>
+                    <Link to='/add' >
+                        <h4 style={{color: 'white'}}> Add Product </h4>
                     </Link>
                 </nav>
     

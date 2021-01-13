@@ -9,7 +9,6 @@ import Mobile from './assets/Mobile Icon.png'
 import Trading from './assets/Paper Icon.png'
 import Market from './assets/Coin Icon.png'
 
-
 function Nav () {
     return (
         <div>
@@ -40,9 +39,7 @@ function Header () {
 function Service () {
     return (
         <div>
-            <h4 className='h4' 
-            style={{color: 'black', fontFamily: 'Poppins', fontSize: '24px', lineHeight: '36px', textAlign: 'center', fontWeight: '700', marginTop: '12%' }}> Our services for East Africa’s traders 
-            </h4>
+                        <Info />    
 
             <Services />
             <Join />
@@ -51,9 +48,16 @@ function Service () {
     )
 }
 
+function Info () {
+    return <div>
+        <h4 className='h4'> Our services for East Africa’s traders </h4>
+    </div>
+}
+
 function Services () {
     return (
         <div className='servicesContainer'>
+            
             <div className='mobile'>
                 <img src={Mobile} alt='' />
                 <h1> Mobile Based Services </h1>
@@ -80,7 +84,7 @@ function Join () {
 
     return (
         <div className='join'>
-            <p
+            <p class='join-info'
             style={{
                 fontFamily: 'Poppins',
                 fontStyle: 'normal',
@@ -105,7 +109,7 @@ function Join () {
 
 function Testimonial () {
     return (
-        <div>
+        <div className='traders'>
             <h1 style={{
                 textAlign: 'center',
                 fontWeight: '700',
@@ -118,6 +122,8 @@ function Testimonial () {
             }}> What traders are saying about Sauti </h1>
 
             <Review />
+            <Footer />
+
         </div>
     )
 }
@@ -135,18 +141,26 @@ function Review () {
                 <p> “Sauti is like a secret partner in my business – it’s there to give me <br /> information before I go to the market and help me estimate my <br /> profit. Before I even leave my house I know the price of groundnuts <br /> in Gulu and Lira, the current exchange rate and the amount of tax I <br /> will pay” </p>
                 <h1> -Edna Mudibo, Cross-Border Trader, Busia, Kenya </h1>
             </div>
+
         </div>
     )
 }
 
+function Footer () {
+    return <div className='footer'>
+        <p> Contact </p>
+        <p> About </p>
+    </div>
+}
+
 export default function Landing () {
     return (
-        <div>
-            <div className='bb'>
+        <div className='bb-cont'>
+            <div className='bb' >
                 <Nav />
                 <Header />
-                <Service />
             </div>
+            <Service />
         </div>
     )
 }

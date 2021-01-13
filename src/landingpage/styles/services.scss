@@ -29,6 +29,47 @@
             font-family: Poppins;
         }
     }
+}
 
+@media only screen and (max-width: 600px) {
+    .servicesContainer {
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto;
+        width: 67%;
     
+
+        .mobile  {
+            img {
+                margin-top: 10%;
+                width: 28.33px;
+                height: 60px;
+            }
+        }
+
+        .mobile, .trading, .market {        
+            width: 100%;
+            
+            
+    
+            p {
+                font-weight: 300;
+                font-size: 14px;
+                line-height: 21px;
+                margin-bottom: 20%;
+            }
+    
+            h1 {
+                font-size: 16px;
+                line-height: 24px;
+            }
+        }
+
+        .trading, .market {
+            img {
+                width: 50px;
+                height: 50px;
+            }
+        }
+    }
 }
