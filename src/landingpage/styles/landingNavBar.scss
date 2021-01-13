@@ -6,7 +6,7 @@
     font-family: 'Poppins', sans-serif;
     color: white;
 
-    .left {
+    .landingLeft {
         .landingLogo {
             font-weight: 700;
             font-size: 36px;
@@ -16,7 +16,7 @@
         }
     }
 
-    .right {
+    .landingRight {
         display: flex;
         justify-content: space-around;
         width: 20%;
@@ -57,7 +57,7 @@
         justify-content: space-between;
         font-family: 'Poppins', sans-serif;
     
-        .left {
+        .landingLeft {
             .landingLogo {
                 font-weight: 700;
                 font-size: 24px;
@@ -67,7 +67,7 @@
             }
         }
     
-        .right {
+        .landingRight {
             display: flex;
             justify-content: space-around;
             width: 20%;

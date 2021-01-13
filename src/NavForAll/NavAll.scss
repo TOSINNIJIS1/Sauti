@@ -1,0 +1,29 @@
+
+.landingNav {
+    display: none;
+}
+
+
+@media only screen and (max-width: 600px) {
+
+    .landingNav {
+        display: flex;
+    }
+    .landingRight > .logout, .home {
+        display: none;
+    }
+    
+    .landingRight {
+        font-weight: 300;
+        font-size: 12px;
+        line-height: 18px;
+    }
+
+    .landingLogo {
+        // border: solid red;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 36px;
+        line-height: 54px;
+    }
+}

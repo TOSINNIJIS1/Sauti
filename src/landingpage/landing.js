@@ -8,21 +8,22 @@ import { Link } from 'react-router-dom';
 import Mobile from './assets/Mobile Icon.svg'
 import Trading from './assets/Paper Icon.svg'
 import Market from './assets/Coin Icon.svg'
+import Footer from '../footer/footer'
+
 
 function Nav () {
     return (
         <div>
             <nav className='landingNav'>
-                <ul className='left'>
+                <ul className='landingLeft'>
                     <li className='landingLogo'> Sauti. </li>
                 </ul>
 
-                <ul className='right'>
+                <ul className='landingRight'>
                     <Link to='/about' className='about'> About </Link>
                     <Link to='/login' className='login'> Sign In  </Link>
                 </ul>
             </nav>
-            
         </div>
     )
 }
@@ -144,13 +145,6 @@ function Review () {
 
         </div>
     )
-}
-
-function Footer () {
-    return <div className='footer'>
-        <p> Contact </p>
-        <p> About </p>
-    </div>
 }
 
 export default function Landing () {

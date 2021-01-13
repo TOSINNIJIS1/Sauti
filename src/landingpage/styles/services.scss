@@ -1,13 +1,14 @@
 .servicesContainer {
     display: flex;
-    margin: 1%;
+    // margin: 1%;
     width: 60%;
-    margin-left: 26%;
+    margin-left: 20%;
+    margin: 0 auto;
     margin-top: 10%;
+
 
     .mobile, .trading, .market {        
         width: 33%;
-        
 
         p {
             font-family: Open Sans;

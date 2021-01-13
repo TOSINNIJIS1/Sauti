@@ -2,16 +2,19 @@
     display: flex;
     width: 80%;
     margin: 0 auto;
+    word-break: break-word;
+
     
     h1 {
         font-family: 'Open Sans';
         font-weight: 700;
         font-size: 16px;
         line-height: 21.79px;
-        width: 100%;
+        width: 80%;
         margin: 0 auto;
         margin-left: 13%;
         margin-bottom: 5%;
+        word-break: break-word;
     }
 
     p {
@@ -25,6 +28,7 @@
         margin: 0 auto;
         margin-bottom: 5%;
         margin-top: 5%;
+        word-break: break-word;
     }
 
     
@@ -47,14 +51,5 @@
 @media only screen and (max-width: 600px) {
     .traders h1, .reviewContainer {
         display: none;
-    }
-
-    .footer {
-        display: flex;
-        justify-content: space-evenly;
-        background: #20141D;  
-        color: white;
-        font-size: 12px;
-        line-height: 18px;  
     }
 }
