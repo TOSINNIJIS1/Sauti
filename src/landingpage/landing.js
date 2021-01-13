@@ -5,9 +5,9 @@ import './styles/services.scss';
 import './styles/join.scss';
 import './styles/review.scss';
 import { Link } from 'react-router-dom';
-import Mobile from './assets/Mobile Icon.png'
-import Trading from './assets/Paper Icon.png'
-import Market from './assets/Coin Icon.png'
+import Mobile from './assets/Mobile Icon.svg'
+import Trading from './assets/Paper Icon.svg'
+import Market from './assets/Coin Icon.svg'
 
 function Nav () {
     return (
