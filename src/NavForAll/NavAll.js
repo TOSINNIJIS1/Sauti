@@ -17,7 +17,7 @@ export default function NavAll () {
                 </ul>
 
                 <ul className='landingRight'>
-                    <Link to='/home' className='home'> Home </Link>
+                    <Link to='/' className='home'> Home </Link>
                     <Link to='/logout' className='logout'> Sign Out </Link>
                     <Link to='/login' className='login'> Sign In  </Link>
                 </ul>

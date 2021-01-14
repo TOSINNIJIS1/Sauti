@@ -191,3 +191,21 @@
     text-decoration: none;
     list-style-type: none;
 }
+
+
+@media only screen and (max-width: 600px) {
+    .listContainer {
+        .login {
+            display: none;
+        }
+
+        .home {
+            color: white;
+            display: flex;
+        }
+
+        .left {
+            display: none;
+        }
+    }
+}

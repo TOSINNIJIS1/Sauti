@@ -53,9 +53,12 @@
     width: 80%;
     margin: 0 auto;
     margin-top: 10%;
+
     .firstList {
         display: flex;
         justify-content: center;
+        // width: 100%;
+        // margin: 0 auto;
 
         .board1 {
             width: 100%;
@@ -185,17 +188,97 @@
 
     footer {
         display: flex;
+        justify-content: space-evenly;
+        width: 50%;
         margin: 0 auto;
         
         p {
+            width: 10%;
+            display: flex;
+            justify-content: space-between;
             font-family: Open Sans;
             font-style: normal;
             font-weight: normal;
             font-size: 16px;
             line-height: 22px;
             color: #FFFFFF;
-            margin: 10%;
         }
     }
 }
 
+
+@media only screen and (max-width: 600px) {
+    .navCont {
+        height: 11vh;
+    }
+
+    .headerDash {
+        font-style: normal;
+        font-weight: bold;
+        font-size: 24px;
+        line-height: 36px;
+        margin-top: 10%;
+    }
+
+    .boardContainer {
+        display: flex;
+        flex-direction: column;
+        // width: 90%;
+
+        .firstList {
+            flex-direction: column;
+
+            .board1, .board2  {
+                padding: 0;
+                margin: 0;
+                margin-top: 10%;
+
+                h1 {
+                    font-style: normal;
+                    font-weight: bold;
+                    font-size: 18px;
+                    line-height: 27px;
+                    text-align: center;
+                    margin-bottom: 0;
+                }
+
+                p {
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 16px;
+                    line-height: 24px;
+                    text-align: center;
+                }
+            }
+            
+        }
+
+        .secondList {
+            display: flex;
+            flex-direction: column;
+
+            .board3, .board4  {
+                padding: 0;
+                margin: 0;
+                margin-top: 10%;
+                
+                h1 {
+                    font-style: normal;
+                    font-weight: bold;
+                    font-size: 18px;
+                    line-height: 27px;
+                    text-align: center;
+                    margin-bottom: 0;
+                }
+
+                p {
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 16px;
+                    line-height: 24px;
+                    text-align: center;
+                }
+            }
+        }
+    }
+}

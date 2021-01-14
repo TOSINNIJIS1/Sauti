@@ -19,3 +19,44 @@
         }
     }
 }
+
+@media only screen and (max-width: 600px) {
+    .listContainer {
+        display: flex;
+        flex-direction: column;
+        .left {
+            display: none;
+        }
+
+        h1 {
+            font-style: normal;
+            font-weight: bold;
+            font-size: 24px;
+            line-height: 36px;
+            margin-bottom: 20%;
+        }
+
+        form {
+            input {
+                padding: 5px;
+                margin: 15px 0;
+                
+            }
+
+            label {
+                font-style: normal;
+                font-weight: normal;
+                font-size: 16px;
+                line-height: 24px;
+            }
+
+
+            button {
+                margin-top: 50%;
+
+            }
+
+
+        }
+    }
+}

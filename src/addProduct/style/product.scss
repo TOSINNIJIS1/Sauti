@@ -69,7 +69,6 @@
 
     .right {
         width: 100%;
-        border: solid;
         
 
         form {
@@ -129,8 +128,54 @@
                     opacity: unset;
                 }
             }
-
-
         }
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .productCont {
+        display: flex;
+        flex-direction: column;
+
+        .login {
+            display:  none;
+        }
+
+        .home {
+            color: white;
+            display: flex;
+        }
+        .left {
+            display: none;
+        }
+
+
+        form {
+            input, select {
+                padding: 5px;
+                margin: 10px 0;
+            }
+            label {
+                font-style: normal;
+                font-weight: bold;
+                font-size: 16px;
+                line-height: 24px;
+            }
+
+            .upload, .up {
+                display: none;
+            }
+
+            button {
+                margin-top: 30%;
+            }
+
+            
+            
+            
+        }
+    }
+    .footer {
+        margin-top: 50%;
     }
 }

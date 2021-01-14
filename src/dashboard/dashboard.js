@@ -1,6 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './styles/dashboard.scss';
+import Product from './assets/Product Icon.svg';
+import Market from './assets/Market Price Icon.svg';
+import List from './assets/Listings Icon.svg';
+import Profile from './assets/Profile Icon.svg'
 
 function Nav () {
     
@@ -30,6 +34,8 @@ function Boards () {
                         <h1> Add Product </h1>
                     </Link>
                     <p> Create a listing for your product </p>
+
+                    <img src={Product} alt='' />
                 </div>
 
                 <div className='board2'>
@@ -37,6 +43,8 @@ function Boards () {
                         <h1> Market Prices </h1>
                     </Link>
                     <p> Compare current market prices </p>
+
+                    <img src={Market} alt='' />
                 </div>
             </div>
 
@@ -46,6 +54,8 @@ function Boards () {
                         <h1> Listings </h1>
                     </Link>
                     <p> All of your listings in one place </p>
+
+                    <img src={List} alt='' />
                 </div>
 
                 <div className='board4'>
@@ -53,6 +63,8 @@ function Boards () {
                         <h1> Profile </h1>
                     </Link>
                     <p> Edit and update your profile </p>
+
+                    <img src={Profile} alt='' />
                 </div>
             </div>
         </div>
@@ -64,8 +76,13 @@ function Footer () {
     return (
         <div className='footerCont'>
             <footer>
-                <p> Contact </p>
-                <p> About </p>
+                <div>
+                    <p> Contact </p>
+                </div>
+                
+                <div>
+                    <p> About </p>
+                </div>
             </footer>
         </div>
     )

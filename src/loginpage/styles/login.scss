@@ -155,3 +155,62 @@
         }
     }
 }
+
+
+@media only screen and (max-width: 600px) {
+
+    * {
+        font-family: Poppins;
+
+    }
+    
+    .logContainer {
+        display: flex;
+        flex-direction: column;
+
+        .login {
+            display: none;
+        }
+
+        .left {
+            display: none;
+        }
+
+        .right {
+            font-family: Poppins;
+            width: 100%;
+            margin: 0 auto;
+
+            h1 {
+                font-style: normal;
+                font-weight: normal;
+                font-size: 24px;
+                line-height: 36px;
+            }
+
+            form {
+                input {
+                    padding: 5px;
+                    margin: 10px 0;
+                }
+
+                label {
+                    font-family: Poppins;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 16px;
+                    line-height: 24px;
+                }
+
+                button {
+                    margin-top: 20%;
+                    margin-bottom: 20%;
+                    font-family: Poppins;
+                }
+            }
+
+            
+        }
+    }
+    
+}
