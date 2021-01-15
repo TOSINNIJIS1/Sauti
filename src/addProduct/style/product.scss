@@ -130,7 +130,21 @@
             }
         }
     }
+
+    
 }
+.landingNav {
+    display: none;
+}
+
+.prodFooter{
+    
+    .footer {
+        display: none;
+        margin: 0;
+    }
+}
+
 
 @media only screen and (max-width: 600px) {
     .productCont {
@@ -167,15 +181,21 @@
             }
 
             button {
-                margin-top: 30%;
+                margin-top: 20%;
             }
 
             
-            
-            
         }
     }
-    .footer {
-        // margin-top: 50%;
+
+    .landingNav {
+        display: flex;
+    }
+
+    .prodFooter {
+        .footer {
+            display: flex;
+            margin-top: 20%;
+        }
     }
 }

@@ -143,7 +143,7 @@ class ProductInfo extends React.Component {
 export default function Product() {
 
     return (
-        <div>
+        <div className='prodFooter'>
             <ProductInfo />
             <Footer />
         </div>

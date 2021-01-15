@@ -63,6 +63,38 @@
                 background-color: #20141D;
             }
 
+            button:nth-child(3) {
+                display: none;
+            }
+
         }
     }
+}
+
+@media only screen and (max-width: 600px) {
+    
+    .button {
+        button:nth-child(1) {
+            display: none;
+            border: solid red;
+        }
+
+        button:nth-child(2) {
+            display: none;
+            border: solid red;
+        }
+
+        .update {
+            display: flex;
+        }
+
+        #btnUpdate {
+            display: flex;
+            width: 100%;
+            margin: 10% 0;
+            justify-content: center;
+            margin-bottom: 30%;
+        }
+    }
+    
 }

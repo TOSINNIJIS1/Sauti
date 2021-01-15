@@ -1,10 +1,8 @@
-.footer {
-    margin-top: 20%;
-    display: none;
-}
-
 
 .join {
+    .footer {
+        display: none;
+    }
     .reg {
         width: 100%;
         display: flex;
@@ -35,6 +33,7 @@
     }
 
     .join {
+        margin-bottom: 20%;
         .reg {
             .p {
                 width: 35%;

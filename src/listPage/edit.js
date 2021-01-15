@@ -1,10 +1,12 @@
 import React from 'react'
 import Image from './images/cristian-newman-tnxRFtXI9dI-unsplash.png';
 import {Link} from 'react-router-dom'
+import NavAll from '../NavForAll/NavAll';
+import Footer from '../footer/footer';
 
 function Edit() {
     return (
-        <div>
+        <div className='footCont'>
             <div className='listContainer'>
                 <div className='left'>
                     <h1 Link to='/'> Sauti </h1>
@@ -36,15 +38,24 @@ function Edit() {
 
                     <p> Sign Out </p>
                 </div>
+                <NavAll />
+
 
                 <div className='right' style={{display: 'flex'}}>
                     
+                    <div>
+                        <h4 className='editHeader' style={{textAlign: 'center'}}> Edit </h4>
+                    </div> 
                     <div className='edit'>
-                        <div>
+                        <div className='editImg'>
                             <img src={Image} alt='' />
                         </div>
 
                         <div className='form'>
+                            {/* <div className='editHeader' style={{textAlign: 'center', fontStyle: 'normal', fontWeight: 'bold', fontSize: '24px', lineHeight: '36px'}}>
+                                <h4> Edit </h4>
+                            </div> */}
+
                             <form >
                                 <label> Location </label>
                                 <input
@@ -71,12 +82,13 @@ function Edit() {
 
                                 />
 
-                                <button onClick={(e) => {e.preventDefault()}} > Save </button>
+                                <button id='save' onClick={(e) => {e.preventDefault()}} > Save </button>
                             </form>
                         </div> 
                     </div>
                 </div>
             </div>
+            <Footer />
         </div>
     )
 }

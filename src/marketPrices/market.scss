@@ -13,11 +13,16 @@
         color: #FFFFFF;
         padding: 1%;
         cursor: auto;
+        margin-top: 5%;
 
         &[disabled] {
             opacity: 0.4;
         }
     }
+}
+
+.marketFooter {
+    display: none;
 }
 
 @media only screen and (max-width: 600px) {
@@ -33,7 +38,7 @@
             font-weight: bold;
             font-size: 24px;
             line-height: 36px;
-            margin-bottom: 20%;
+            margin-bottom: 10%;
         }
 
         form {
@@ -51,12 +56,16 @@
             }
 
 
-            button {
-                margin-top: 50%;
+            
+        }
 
-            }
+        .footer {
+            padding: 0;
+            margin: 0;
+        }
 
-
+        #button {
+            margin-top: 20%;
         }
     }
 }

@@ -87,7 +87,7 @@ function Market() {
                         />
 
                         
-                        <button disabled={!market.category || !market.item || !market.location }> Check Price </button> 
+                        <button id='button' disabled={!market.category || !market.item || !market.location }> Check Price </button> 
                     </form>
                 </div>
             </div>

@@ -5,6 +5,8 @@ import secondImage from './images/dollar-gill-NY82qt3niy8-unsplash 1.png';
 import thirdImage from './images/nana-andoh-PX3WTTgNqs8-unsplash.png'
 import Edit from './edit';
 import { Link } from 'react-router-dom';
+import NavAll from '../NavForAll/NavAll';
+import Footer from '../footer/footer'
 
 
 function CardList () {
@@ -33,6 +35,7 @@ function CardList () {
 
     return (
         <div className='listContainer'>
+            <NavAll />
             <div className='left'>
                 <h1 Link to='/'> Sauti </h1>
                 <hr />
@@ -64,9 +67,10 @@ function CardList () {
                 <p> Sign Out </p>
             </div>
 
+
             <div className='right'>
 
-
+            
             {card.map (data => (
                 <div className='card'>
                     <img src={data.image} alt='cristian newman'  />
@@ -82,6 +86,8 @@ function CardList () {
 
                 
             </div>
+            <Footer />
+
         </div>
     )
 }
@@ -89,7 +95,7 @@ function CardList () {
 export default function ListProduct() {
     return (
         <div>
-            <CardList />
+            {/* <CardList /> */}
             <Edit />
         </div>
     )

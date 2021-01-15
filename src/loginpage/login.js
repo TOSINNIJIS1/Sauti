@@ -3,8 +3,16 @@ import './styles/login.scss';
 import Left from '../left/left';
 import NavAll from '../NavForAll/NavAll';
 import Footer from '../footer/footer'
+import { Link } from 'react-router-dom';
+// import Popup from './popup';
+
 
 export default function Login() {
+
+    // const [popup, setPopup] = useState(false);
+    // const openPopup = () => {
+    //     setPopup(prev => !prev);
+    // };
 
     const [login, setLogin] = useState({
         email: '',
@@ -24,12 +32,11 @@ export default function Login() {
     }
 
     return (
-        <div>
+        <div class='forFooter'>
             <div className='logContainer'>
                 <div className='navReg'>
                     <NavAll />
                 </div>
-
                 <Left />
 
                 <div className='right'>
@@ -54,20 +61,20 @@ export default function Login() {
                         onChange={set('password')}
                         />
                         
-                        <button disabled={!login.email || !login.password }> Sign In </button>
+                        <button 
+                        disabled={!login.email || !login.password }
+                        // onClick={openPopup}
+                        > Sign In </button>
+                        {/* <Popup popup={popup} setPopup={setPopup} /> */}
                     </form>
 
                     <div className='else'>
-                        <p> No account <b> Sign Up! </b></p>
+                        <p> No account <Link to='/register'><b style={{color: '#20141D'}}> Sign Up! </b> </Link></p>
                         <p> Forgot Password </p>
                     </div>
                 </div>
-
             </div>
-
             <Footer />
-            
         </div>
-
     )
 }

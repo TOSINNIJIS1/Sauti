@@ -48,8 +48,17 @@
 }
 
 
+.traders > .footer {
+    display: none;
+}
+
+
 @media only screen and (max-width: 600px) {
     .traders h1, .reviewContainer {
         display: none;
+    }
+
+    .traders > .footer {
+        display: flex;
     }
 }

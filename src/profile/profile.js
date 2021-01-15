@@ -3,12 +3,15 @@ import '../listPage/styles/list.scss';
 import './profile.scss'
 import ProfileImage from '../listPage/images/ayo-ogunseinde-UzSPiVmnkAA-unsplash.png'
 import {Link} from 'react-router-dom'
+import NavAll from '../NavForAll/NavAll';
+import Footer from '../footer/footer';
 
 export default function Profile () {
 
 
     return (
         <div className='listContainer'>
+            <NavAll />
             <div className='left'>
                 <h1> Sauti </h1>
                 <hr />
@@ -73,9 +76,12 @@ export default function Profile () {
                     <div className='button'>
                     <button onClick={(e) => {e.preventDefault()}} > Save </button>
                     <button onClick={(e) => {e.preventDefault()}} > Cancel </button>
+                    <button id='btnUpdate' onClick={(e) => {e.preventDefault()}} > Update </button>
                     </div>
                 </form>
             </div>
+            <Footer />
+
         </div>
     )
 }
