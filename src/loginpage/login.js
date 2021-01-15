@@ -65,6 +65,9 @@ export default function Login() {
                         disabled={!login.email || !login.password }
                         // onClick={openPopup}
                         > Sign In </button>
+                        <Link to='/dashboard'>
+                            <button id='demo' > Demo Login </button>
+                        </Link>
                         {/* <Popup popup={popup} setPopup={setPopup} /> */}
                     </form>
 

@@ -13,12 +13,14 @@ export default function NavAll () {
             }}
             >
                 <ul className='landingLeft'>
-                    <li className='landingLogo'> Sauti. </li>
+                    <Link to='/dashboard'>
+                        <li className='landingLogo'> Sauti. </li>
+                    </Link>
                 </ul>
 
                 <ul className='landingRight'>
                     <Link to='/' className='home'> Home </Link>
-                    <Link to='/logout' className='logout'> Sign Out </Link>
+                    {/* <Link to='/logout' className='logout'> Sign Out </Link> */}
                     <Link to='/login' className='login'> Sign In  </Link>
                 </ul>
             </nav>

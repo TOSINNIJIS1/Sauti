@@ -11,7 +11,9 @@ function Nav () {
     return (
         <div className='navCont'>
             <nav className='nav'>
-                <h1> Sauti. </h1>
+                <Link to='/'>
+                    <h1> Sauti. </h1>
+                </Link>
                 <p> Sign Out </p>
             </nav>
         </div>
