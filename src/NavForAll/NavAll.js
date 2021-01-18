@@ -6,7 +6,7 @@ import './NavAll.scss';
 export default function NavAll () {
     return (
         <div>
-            <nav className='landingNav'
+            <nav className='allNav'
             style={{
                 marginBottom: '5%',
                 background: '#20141D'

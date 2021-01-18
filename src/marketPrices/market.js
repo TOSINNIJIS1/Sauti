@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import {Link} from 'react-router-dom';
 import Footer from '../footer/footer';
 import NavAll from '../NavForAll/NavAll';
-import './market.scss'
+import './market.scss';
+import PopUp from './PopUp'
 
 function Market() {
 
@@ -12,14 +13,166 @@ function Market() {
         location: ''
     })
 
+    const [marketList, setMarketList] = useState({
+        "id": 1,
+        "category": "Animal Products",
+        "item": "Local Eggs",
+        "price": "20 KES",
+        "location": "Kenya",
+        "description": "Kenyan organic eggs",
+        "user_id": null
+        },
+        {
+        "id": 2,
+        "category": "Beans",
+        "item": "Mixed Beans",
+        "price": "15 UGX",
+        "location": "Uganda",
+        "description": "Ugandan mixed beans",
+        "user_id": null
+        },
+        {
+        "id": 3,
+        "category": "Cereals",
+        "item": "Dry Maize",
+        "price": "35 TZS",
+        "location": "Tanzania",
+        "description": "Tanzanian dry maize",
+        "user_id": null
+        },
+        {
+        "id": 4,
+        "category": "Fruits",
+        "item": "Lemons",
+        "price": "3 RWF",
+        "location": "Rwanda",
+        "description": "Rwandan lemons",
+        "user_id": null
+        },
+        {
+        "id": 5,
+        "category": "Vegetables",
+        "item": "Onions",
+        "price": "5 SSP",
+        "location": "South Sudan",
+        "description": "South Sudanese organic onions",
+        "user_id": null
+        },
+        {
+        "id": 6,
+        "category": "Seeds & Nuts",
+        "item": "Simsim",
+        "price": "15 BIF",
+        "location": "Burundi",
+        "description": "Burundian simsim",
+        "user_id": null
+        },
+        {
+        "id": 7,
+        "category": "Other",
+        "item": "Coffee",
+        "price": "33 KES",
+        "location": "Kenya",
+        "description": "Kenyan organic coffee",
+        "user_id": null
+        },
+        {
+        "id": 8,
+        "category": "Peas",
+        "item": "Green Peas",
+        "price": "7 RWF",
+        "location": "Rwanda",
+        "description": "Rwandan peas",
+        "user_id": null
+        },
+        {
+        "id": 9,
+        "category": "Animal Products",
+        "item": "Chicken",
+        "price": "21 SSP",
+        "location": "South Sudan",
+        "description": "South Sudanese chicken",
+        "user_id": null
+        },
+        {
+        "id": 10,
+        "category": "Roots & Tubers",
+        "item": "Cassava Chips",
+        "price": "5 TZS",
+        "location": "Tanzania",
+        "description": "Tanzanian cassava chips",
+        "user_id": null
+        },
+        {
+        "id": 11,
+        "category": "Beans",
+        "item": "Kidney Beans",
+        "price": "11 UGX",
+        "location": "Uganda",
+        "description": "Ugandan kidney beans",
+        "user_id": null
+        },
+        {
+        "id": 12,
+        "category": "Animal Products",
+        "item": "Beef",
+        "price": "17 BIF",
+        "location": "Burundi",
+        "description": "Burundian beef",
+        "user_id": null
+        },
+        {
+        "id": 13,
+        "category": "Fruits",
+        "item": "Bananas",
+        "price": "17 RWF",
+        "location": "Rwanda",
+        "description": "Rwandan bananas",
+        "user_id": null
+        },
+        {
+        "id": 14,
+        "category": "Other",
+        "item": "Tea",
+        "price": "30 KES",
+        "location": "Kenya",
+        "description": "Kenyan organic tea",
+        "user_id": null
+        })
+
+    const [category, setCategory] = useState('');
+    const [ item, setItem ] = useState('');
+    const [location, setLocation] = useState('');
+
+
+    const categoryChange = (e) => {
+        setCategory(e.target.value)
+    };
+
+    const itemChange = (e) => {
+        setItem(e.target.value)
+    }
+
+    const locationChange = (e) => {
+        setLocation(e.target.value)
+    }
+
     const onChange = (e) => {
         setMarket({
             ...market, [e.target.name]: e.target.value
         })
     }
 
+    const [popup, setPopup] = useState(false)
+
+
+    const onSubmit = (e) => {
+        e.preventDefault();
+        setPopup(!popup)
+    }
+
     return (
-        <div>
+        <div className='marketFooter'>
 
             <div className='listContainer'>
                 <div className='left'>
@@ -63,11 +216,19 @@ function Market() {
                     
                     <form id='market'>
                         <label > Category </label>
-                        <input
-                        name='category'
-                        onChange={onChange} 
-                        value={market.category}
-                        />
+                        <select value={market.category}>
+                            <option value=""> Select Product </option>
+                            <option value="animal products"> Animal Products </option>
+                            <option value="beans"> Beans </option>
+                            <option value="cereals" > Cereals </option>
+                            <option value="fruits" > Fruits </option>
+                            <option value="vegetables"> Vegetables </option>
+                            <option value="seeds & nuts"> Seeds and Nuts </option>
+                            <option value="other"> Other </option>
+                            <option value="peas"> Peas </option>
+                            <option value="roots & tubers"> Roots and Tubers </option>
+                        </select>
+
 
                         <label> Items </label>
                         <input
@@ -85,9 +246,8 @@ function Market() {
                         value={market.location}
                         
                         />
-
-                        
-                        <button id='button' disabled={!market.category || !market.item || !market.location }> Check Price </button> 
+                        <PopUp popup={popup} />                        
+                        <button onClick={onSubmit} id='button' disabled={!market.item || !market.location }> Check Price </button> 
                     </form>
                 </div>
             </div>

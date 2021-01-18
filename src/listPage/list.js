@@ -70,6 +70,7 @@ function CardList () {
 
             <div className='right'>
 
+
             
             {card.map (data => (
                 <div className='card'>
@@ -95,8 +96,8 @@ function CardList () {
 export default function ListProduct() {
     return (
         <div>
-            {/* <CardList /> */}
-            <Edit />
+            <CardList />
+            {/* <Edit /> */}
         </div>
     )
 }

@@ -1,4 +1,9 @@
 moving diagonally# Sauti
+
+The market price need a popup message for the desktop view
+
+the register, login page, add product, and market price need a pop up message for mobile view
+
 # Sauti
 
 
