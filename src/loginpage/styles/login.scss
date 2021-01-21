@@ -214,6 +214,7 @@
             }
             
             .else {
+                // border: solid red;
                 p:nth-child(1) {
                     margin: 0;
                     font-weight: 300;
@@ -235,6 +236,12 @@
 
     .forFooter > .footer {
         display: flex;
+        // margin-top: 20%;
+    }
+
+    #demo {
+        margin-top: 1px;
+        // border: solid red;
     }
     
 }
