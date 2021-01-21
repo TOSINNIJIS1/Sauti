@@ -3,8 +3,8 @@ import './styles/register.scss';
 import Left from '../left/left';
 import NavAll from '../NavForAll/NavAll';
 import Footer from '../footer/footer'
-import axios from 'axios'
 import { withRouter } from 'react-router-dom'
+import axiosWithAuth from '../auth/axiosWithAuth';
 
 
 function Register (history) {
@@ -31,9 +31,10 @@ function Register (history) {
         if (register.password !== register.confirmpassword) {
             alert('password does not match')
         } else {
-            axios.post('http://localhost:8000/register', register)
+            axiosWithAuth().post('/register', register)
             .then(res => {
                 console.log(res, 'done')
+                localStorage.setItem('token', res.data.token)
                 history.history.push('/dashboard')
             })
             .catch(err => err)
