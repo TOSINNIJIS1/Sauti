@@ -5,10 +5,12 @@ import NavAll from '../NavForAll/NavAll';
 import Footer from '../footer/footer'
 import { Link } from 'react-router-dom';
 // import Popup from './popup';
+import axios from 'axios';
+import { withRouter } from 'react-router-dom';
+import axiosWithAuth from '../auth/axiosWithAuth';
 
 
-export default function Login() {
-
+function Login(props) {
     // const [popup, setPopup] = useState(false);
     // const openPopup = () => {
     //     setPopup(prev => !prev);
@@ -21,6 +23,16 @@ export default function Login() {
     
     const onSubmit = (e) => {
         e.preventDefault()
+
+        axiosWithAuth().post('/login', login)
+        .then(res => {
+            console.log(res, 'welcome')
+            localStorage.setItem('token', res.data.token)
+            if (res.status === 200) {
+                props.history.push('/dashboard')
+            }
+        })
+        .catch(err => console.log(err))
     }
 
     const set = (e) => {
@@ -81,3 +93,5 @@ export default function Login() {
         </div>
     )
 }
+
+export default withRouter(Login)

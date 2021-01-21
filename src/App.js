@@ -12,6 +12,11 @@ import './listPage/styles/list.scss'
 
 
 function App() {
+
+  const bang = () => {
+    console.log('bang')
+  }
+
   return (
     <div className='container'>
       

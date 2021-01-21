@@ -147,6 +147,9 @@
 
 
 @media only screen and (max-width: 600px) {
+    .allNav {
+        display: flex;
+    }
     .productCont {
         display: flex;
         flex-direction: column;

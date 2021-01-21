@@ -208,11 +208,9 @@ function Market() {
 
                 <NavAll />
 
-
                 <div className='profileRight' style={{marginTop: '5%'}}>
                     
                     <h1> Market Price Check </h1> 
-
                     
                     <form id='market'>
                         <label > Category </label>
@@ -229,7 +227,6 @@ function Market() {
                             <option value="roots & tubers"> Roots and Tubers </option>
                         </select>
 
-
                         <label> Items </label>
                         <input
                         name='item'
@@ -244,8 +241,9 @@ function Market() {
                         name='location'
                         onChange={onChange} 
                         value={market.location}
-                        
+
                         />
+
                         <PopUp popup={popup} />                        
                         <button onClick={onSubmit} id='button' disabled={!market.item || !market.location }> Check Price </button> 
                     </form>

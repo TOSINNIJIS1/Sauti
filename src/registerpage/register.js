@@ -3,9 +3,11 @@ import './styles/register.scss';
 import Left from '../left/left';
 import NavAll from '../NavForAll/NavAll';
 import Footer from '../footer/footer'
+import axios from 'axios'
+import { withRouter } from 'react-router-dom'
 
 
-function Register (props) {
+function Register (history) {
 
     const [register, setRegister] = useState({
         fname: '',
@@ -25,6 +27,17 @@ function Register (props) {
 
     const onSubmit = (e) => {
         e.preventDefault()
+
+        if (register.password !== register.confirmpassword) {
+            alert('password does not match')
+        } else {
+            axios.post('http://localhost:8000/register', register)
+            .then(res => {
+                console.log(res, 'done')
+                history.history.push('/dashboard')
+            })
+            .catch(err => err)
+        }
     }
 
 
@@ -53,8 +66,8 @@ function Register (props) {
                     <input
                     required
                     type='tel'
-                    pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}'
-                    placeholder='XXX-XXX-XXXX'
+                    // pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}'
+                    placeholder='Enter Phone Number'
                     value={register.phone}
                     onChange={target('phone')}
                     />
@@ -105,13 +118,16 @@ function Register (props) {
 }
 
 
-export default function Registration () {
+function Registration (props) {
+    console.log(props,'another one')
 
     return (
         <div className='regFooter'>
-            <Register />
+            <Register history={props.history} />
             <Footer />
 
         </div>
     )
 }
+
+export default withRouter(Registration)
