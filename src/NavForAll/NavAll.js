@@ -14,14 +14,14 @@ export default function NavAll () {
             >
                 <ul className='navLeft'>
                     <Link to='/dashboard'>
-                        <li className='navLogo'> Sauti. </li>
+                        <li className='navLogo' style={{color: '#FE7A7C'}} > Sauti. </li>
                     </Link>
                 </ul>
 
                 <ul className='navRight'>
-                    <Link to='/' className='home'> Home </Link>
+                    <Link to='/' className='home' style={{color: "white"}}> Home </Link>
                     {/* <Link to='/logout' className='logout'> Sign Out </Link> */}
-                    <Link to='/login' className='login'> Sign In  </Link>
+                    <Link to='/login' className='login' style={{color: "white"}}> Sign In  </Link>
                 </ul>
             </nav>
         </div>
