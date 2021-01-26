@@ -4,9 +4,11 @@ import './styles/dashboard.scss';
 import Product from './assets/Product Icon.svg';
 import Market from './assets/Market Price Icon.svg';
 import List from './assets/Listings Icon.svg';
-import Profile from './assets/Profile Icon.svg'
+import Profile from './assets/Profile Icon.svg';
+import { withRouter } from 'react-router-dom';
 
-function Nav () {
+function Nav ({props}) {
+    console.log(props, 'this is the props')
     
     return (
         <div className='navCont'>
@@ -14,7 +16,16 @@ function Nav () {
                 <Link to='/'>
                     <h1> Sauti. </h1>
                 </Link>
-                <p> Sign Out </p>
+                <p 
+                style={{cursor: 'pointer'}}
+                onClick={ 
+                    () => {
+                        localStorage.removeItem('token')
+                        props.history.push('/')
+                    }
+                }
+
+                > Sign Out </p>
             </nav>
         </div>
         
@@ -90,15 +101,17 @@ function Footer () {
     )
 }
 
-export default function Dashboard () {
+function Dashboard (props) {
 
 
     return (
         <div>
-            <Nav />
+            <Nav props={props} />
             <Header />
             <Boards />
             <Footer />
         </div>
     )
 }
+
+export default withRouter(Dashboard)
