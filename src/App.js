@@ -8,7 +8,8 @@ import Product from './addProduct/product';
 import ListProduct from './listPage/list';
 import Profile from './profile/profile';
 import Market from './marketPrices/market';
-import './listPage/styles/list.scss'
+import './listPage/styles/list.scss';
+import PrivateRoute from './auth/protectedRoute';
 
 
 function App() {
@@ -25,11 +26,11 @@ function App() {
           <Route exact path='/' render={() => <Landing />} />
           <Route path='/register' render={() => <Registration />} />
           <Route path='/login' render={() => <Login  />} />
-          <Route path='/dashboard' render={() => <Dashboard />} />
-          <Route path='/market' render={() => <Market />} />
-          <Route path='/list' render={() => <ListProduct />} />
-          <Route path='/profile' render={() => <Profile />} />
-          <Route path='/product' render={() => <Product />} />
+          <PrivateRoute path='/dashboard' component={ Dashboard } />
+          <Route path='/market' component={ Market} />
+          <Route path='/list' component={ ListProduct } />
+          <Route path='/profile' component = { Profile } />
+          <Route path='/product' component = { Product } />
           <Route render={() => <h1> Page not found </h1>} />
         </Switch>
       </Router>

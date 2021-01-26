@@ -6,7 +6,7 @@ import {Link} from 'react-router-dom'
 import NavAll from '../NavForAll/NavAll';
 import Footer from '../footer/footer';
 
-export default function Profile () {
+export default function Profile (props) {
 
 
     return (
