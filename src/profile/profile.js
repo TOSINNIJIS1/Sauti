@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../listPage/styles/list.scss';
 import './profile.scss'
 import ProfileImage from '../listPage/images/ayo-ogunseinde-UzSPiVmnkAA-unsplash.png'
 import {Link} from 'react-router-dom'
 import NavAll from '../NavForAll/NavAll';
 import Footer from '../footer/footer';
+import Signout from '../dashboard/signout'
+import UserContext from '../context/userContext';
 
-export default function Profile (props) {
-
+export default function Profile () {
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')))
 
     return (
         <div className='listContainer'>
@@ -17,7 +19,6 @@ export default function Profile (props) {
                 <hr />
 
                 <h3> Profile </h3> 
-
                 <nav style={{cursor: 'pointer'}}>
                     <Link to='/'>
                         <h4> Home </h4>
@@ -40,7 +41,7 @@ export default function Profile (props) {
                     </Link>
                 </nav>
                 
-                <p> Sign Out </p>
+                <Signout />
             </div>
 
             <div className='profileRight' style={{marginTop: '2%'}}>
@@ -51,26 +52,31 @@ export default function Profile (props) {
                 <form>
                     <label> Full Name </label>
                     <input
+                    value={user.fname}
                     />
 
                     <label> Phone </label>
                     <input 
+                    value={user.phone}
 
                     />
 
                     <label> Email </label>
                     <input 
+                    value={user.email}
 
                     />
 
                     <label> Password </label>
                     <input 
+                    type='password'
+                    value={user.password}
                     
                     />
 
                     <label> Location </label>
                     <input 
-
+                    value={user.location}
                     />
 
                     <div className='button'>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './styles/login.scss';
 import Left from '../left/left';
 import NavAll from '../NavForAll/NavAll';
@@ -10,12 +10,8 @@ import { withRouter } from 'react-router-dom';
 import axiosWithAuth from '../auth/axiosWithAuth';
 
 
-function Login(props) {
-    // const [popup, setPopup] = useState(false);
-    // const openPopup = () => {
-    //     setPopup(prev => !prev);
-    // };
 
+function Login(props) {
     const [login, setLogin] = useState({
         email: '',
         password: ''
@@ -26,9 +22,10 @@ function Login(props) {
 
         axiosWithAuth().post('/login', login)
         .then(res => {
-            console.log(res, 'welcome')
-            localStorage.setItem('token', res.data.token)
+            console.log(res.data.token, 'welcome')            
             if (res.status === 200) {
+                localStorage.setItem('token', res.data.token)
+                localStorage.setItem('user', JSON.stringify(res.data.user))
                 props.history.push('/dashboard')
             }
         })

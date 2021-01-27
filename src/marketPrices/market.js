@@ -3,7 +3,8 @@ import {Link} from 'react-router-dom';
 import Footer from '../footer/footer';
 import NavAll from '../NavForAll/NavAll';
 import './market.scss';
-import PopUp from './PopUp'
+import PopUp from './PopUp';
+import Signout from '../dashboard/signout'
 
 function Market() {
 
@@ -175,38 +176,37 @@ function Market() {
         <div className='marketFooter'>
 
             <div className='listContainer'>
-                <div className='left'>
-                    <h1 Link to='/'> Sauti </h1>
-                    <hr />
+                
 
-                    <h3> Market Price Check </h3> 
+            <div className='left'>
+                        <h1> Sauti </h1>
+                        <hr />
 
-                    <nav style={{cursor: 'pointer'}}>
-                        <Link to='/'>
-                            <h4> Home </h4>
-                        </Link>
+                        <nav style={{cursor: 'pointer'}}>
+                            <Link to='/'>
+                                <h4> Home </h4>
+                            </Link>
 
-                        <Link to='/market'>
-                            <h4 style={{color: 'white'}}> Market Price </h4>
-                        </Link>
+                            <Link to='/market'>
+                                <h4> Market Price </h4>
+                            </Link>
 
-                        <Link to='/list'>
-                            <h4> Listings </h4>
-                        </Link>
+                            <Link to='/list'>
+                                <h4> Listings </h4>
+                            </Link>
 
-                        <Link to='/profile'>
-                            <h4 link to='/profile'> Profile </h4>
-                        </Link>
-                        
-                        <Link to='/product'>
-                            <h4 link to='product'> Add Product </h4>
-                        </Link>
-                    </nav>
+                            <Link to='/profile'>
+                                <h4 link to='/profile'> Profile </h4>
+                            </Link>
+                            
+                            <Link to='/product' >
+                                <h4 style={{color: 'white'}}> Add Product </h4>
+                            </Link>
+                        </nav>
 
-                    <p> Sign Out </p>
-                </div>
+                        <Signout />
 
-                <NavAll />
+                    </div>
 
                 <div className='profileRight' style={{marginTop: '5%'}}>
                     

@@ -5,6 +5,7 @@ import Upload from './image/upload.png';
 import {Link} from 'react-router-dom';
 import NavAll from '../NavForAll/NavAll'
 import Footer from '../footer/footer'
+import Signout from '../dashboard/signout';
 
 
 let CATEGORIES = ['Clothes', 'Shoes', 'Jewelries']
@@ -60,32 +61,31 @@ class ProductInfo extends React.Component {
                     <div className='left'>
                         <h1> Sauti </h1>
                         <hr />
-        
-                        <h3> Add Product </h3> 
-        
+
                         <nav style={{cursor: 'pointer'}}>
-                        <Link to='/'>
-                            <h4> Home </h4>
-                        </Link>
+                            <Link to='/'>
+                                <h4> Home </h4>
+                            </Link>
 
-                        <Link to='/market'>
-                            <h4> Market Price </h4>
-                        </Link>
+                            <Link to='/market'>
+                                <h4> Market Price </h4>
+                            </Link>
 
-                        <Link to='/list'>
-                            <h4> Listings </h4>
-                        </Link>
+                            <Link to='/list'>
+                                <h4> Listings </h4>
+                            </Link>
 
-                        <Link to='/profile'>
-                            <h4 link to='/profile'> Profile </h4>
-                        </Link>
-                        
-                        <Link to='/add' >
-                            <h4 style={{color: 'white'}}> Add Product </h4>
-                        </Link>
-                    </nav>
-        
-                        <p> Sign Out </p> 
+                            <Link to='/profile'>
+                                <h4 link to='/profile'> Profile </h4>
+                            </Link>
+                            
+                            <Link to='/product' >
+                                <h4 style={{color: 'white'}}> Add Product </h4>
+                            </Link>
+                        </nav>
+
+                        <Signout />
+
                     </div>
         
                     <div className='right'>

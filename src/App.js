@@ -17,10 +17,11 @@ function App() {
   const bang = () => {
     console.log('bang')
   }
+  
 
   return (
     <div className='container'>
-      
+      {/* <SideNav /> */}
       <Router>
         <Switch>
           <Route exact path='/' render={() => <Landing />} />
