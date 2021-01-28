@@ -35,7 +35,7 @@ function Register (history) {
             .then(res => {
                 console.log(res, 'done')
                 localStorage.setItem('token', res.data.token)
-                history.history.push('/dashboard')
+                history.history.push('/login')
             })
             .catch(err => err)
         }
