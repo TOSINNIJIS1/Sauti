@@ -4,7 +4,7 @@ import Left from '../left/left';
 import NavAll from '../NavForAll/NavAll';
 import Footer from '../footer/footer'
 import { withRouter } from 'react-router-dom'
-import axiosWithAuth from '../auth/axiosWithAuth';
+import axiosWithAuth from '../auth/authWithAuth';
 
 
 function Register (history) {
@@ -31,7 +31,7 @@ function Register (history) {
         if (register.password !== register.confirmpassword) {
             alert('password does not match')
         } else {
-            axiosWithAuth().post('/register', register)
+            axiosWithAuth().post('/users/register', register)
             .then(res => {
                 console.log(res, 'done')
                 localStorage.setItem('token', res.data.token)

@@ -10,7 +10,6 @@ import Footer from '../footer/footer'
 
 
 function CardList () {
-    
     const [card] = useState([
         {
             image: `${firstImage}`,

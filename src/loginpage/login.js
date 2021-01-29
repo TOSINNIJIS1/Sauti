@@ -5,9 +5,8 @@ import NavAll from '../NavForAll/NavAll';
 import Footer from '../footer/footer'
 import { Link } from 'react-router-dom';
 // import Popup from './popup';
-import axios from 'axios';
 import { withRouter } from 'react-router-dom';
-import axiosWithAuth from '../auth/axiosWithAuth';
+import axiosWithAuth from '../auth/authWithAuth';
 
 
 
@@ -20,7 +19,7 @@ function Login(props) {
     const onSubmit = (e) => {
         e.preventDefault()
 
-        axiosWithAuth().post('/login', login)
+        axiosWithAuth().post('/users/login', login)
         .then(res => {
             console.log(res.data.token, 'welcome')            
             if (res.status === 200) {

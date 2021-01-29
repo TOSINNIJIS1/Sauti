@@ -1,146 +1,44 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {Link} from 'react-router-dom';
 import Footer from '../footer/footer';
 import NavAll from '../NavForAll/NavAll';
 import './market.scss';
 import PopUp from './PopUp';
 import Signout from '../dashboard/signout'
+import axiosWithAuth from '../auth/authWithAuth'
+import axios from 'axios';
 
 function Market() {
 
+    const token = localStorage.getItem('token')
+    
     const [market, setMarket] = useState({
         category: '',
         item: '',
         location: ''
     })
 
-    const [marketList, setMarketList] = useState({
-        "id": 1,
-        "category": "Animal Products",
-        "item": "Local Eggs",
-        "price": "20 KES",
-        "location": "Kenya",
-        "description": "Kenyan organic eggs",
-        "user_id": null
-        },
-        {
-        "id": 2,
-        "category": "Beans",
-        "item": "Mixed Beans",
-        "price": "15 UGX",
-        "location": "Uganda",
-        "description": "Ugandan mixed beans",
-        "user_id": null
-        },
-        {
-        "id": 3,
-        "category": "Cereals",
-        "item": "Dry Maize",
-        "price": "35 TZS",
-        "location": "Tanzania",
-        "description": "Tanzanian dry maize",
-        "user_id": null
-        },
-        {
-        "id": 4,
-        "category": "Fruits",
-        "item": "Lemons",
-        "price": "3 RWF",
-        "location": "Rwanda",
-        "description": "Rwandan lemons",
-        "user_id": null
-        },
-        {
-        "id": 5,
-        "category": "Vegetables",
-        "item": "Onions",
-        "price": "5 SSP",
-        "location": "South Sudan",
-        "description": "South Sudanese organic onions",
-        "user_id": null
-        },
-        {
-        "id": 6,
-        "category": "Seeds & Nuts",
-        "item": "Simsim",
-        "price": "15 BIF",
-        "location": "Burundi",
-        "description": "Burundian simsim",
-        "user_id": null
-        },
-        {
-        "id": 7,
-        "category": "Other",
-        "item": "Coffee",
-        "price": "33 KES",
-        "location": "Kenya",
-        "description": "Kenyan organic coffee",
-        "user_id": null
-        },
-        {
-        "id": 8,
-        "category": "Peas",
-        "item": "Green Peas",
-        "price": "7 RWF",
-        "location": "Rwanda",
-        "description": "Rwandan peas",
-        "user_id": null
-        },
-        {
-        "id": 9,
-        "category": "Animal Products",
-        "item": "Chicken",
-        "price": "21 SSP",
-        "location": "South Sudan",
-        "description": "South Sudanese chicken",
-        "user_id": null
-        },
-        {
-        "id": 10,
-        "category": "Roots & Tubers",
-        "item": "Cassava Chips",
-        "price": "5 TZS",
-        "location": "Tanzania",
-        "description": "Tanzanian cassava chips",
-        "user_id": null
-        },
-        {
-        "id": 11,
-        "category": "Beans",
-        "item": "Kidney Beans",
-        "price": "11 UGX",
-        "location": "Uganda",
-        "description": "Ugandan kidney beans",
-        "user_id": null
-        },
-        {
-        "id": 12,
-        "category": "Animal Products",
-        "item": "Beef",
-        "price": "17 BIF",
-        "location": "Burundi",
-        "description": "Burundian beef",
-        "user_id": null
-        },
-        {
-        "id": 13,
-        "category": "Fruits",
-        "item": "Bananas",
-        "price": "17 RWF",
-        "location": "Rwanda",
-        "description": "Rwandan bananas",
-        "user_id": null
-        },
-        {
-        "id": 14,
-        "category": "Other",
-        "item": "Tea",
-        "price": "30 KES",
-        "location": "Kenya",
-        "description": "Kenyan organic tea",
-        "user_id": null
-        })
+    const [marketList, setMarketList] = useState([])
 
+    console.log(marketList, 'market')
+
+    // useEffect(() => {
+    //     getProducts()
+    // })
+
+    const getProducts = () => {
+        axios.get('http://localhost:1000/api/products', {
+            headers: { "Authorization": `Bearer ${token}` }
+        })
+        .then((res) => {
+            setMarketList(res.data)
+            console.log(res.data)
+        })
+        .catch((error) => console.error(error))
+    }
+
+    
+    
     const [category, setCategory] = useState('');
     const [ item, setItem ] = useState('');
     const [location, setLocation] = useState('');
@@ -169,7 +67,16 @@ function Market() {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        setPopup(!popup)
+
+
+        axios.get('http://localhost:1000/api/products', {
+            headers: { "Authorization": `Bearer ${token}` }
+        })
+        .then((res) => {
+            setMarketList(res.data)
+            console.log(res.data)
+        })
+        .catch((error) => console.error(error))
     }
 
     return (
@@ -214,7 +121,7 @@ function Market() {
                     
                     <form id='market'>
                         <label > Category </label>
-                        <select value={market.category}>
+                        <select name='category' value={market.category}>
                             <option value=""> Select Product </option>
                             <option value="animal products"> Animal Products </option>
                             <option value="beans"> Beans </option>
