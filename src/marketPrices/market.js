@@ -31,29 +31,9 @@ function Market() {
     }
 
     const [marketList, setMarketList] = useState([])
-    
-    const [category, setCategory] = useState('');
-    const [ item, setItem ] = useState('');
-    const [location, setLocation] = useState('');
+    console.log(marketList)
 
-
-    const categoryChange = (e) => {
-        setCategory(e.target.value)
-    };
-
-    const itemChange = (e) => {
-        setItem(e.target.value)
-    }
-
-    const MarketOocationChange = (e) => {
-        setLocation(e.target.value)
-    }
-
-
-    const [popup, setPopup] = useState(false)
-
-
-    const onSubmit = (e) => {
+    const MarketListOnSubmit = (e) => {
         e.preventDefault();
         let token = localStorage.getItem('token')
 
@@ -62,11 +42,34 @@ function Market() {
             headers: { "Authorization": `Bearer ${token}` }
         })
         .then((res) => {
-            setMarketList(res.data)
-            console.log(res.data)
+            const result = res.data
+
+            let filterMarketList = result.filter(products => {
+                let marketItemData = products.item.toString().toLowerCase();
+                let marketCategoryData = products.category.toString().toLowerCase();
+                let marketLocationData = products.location.toString().toLowerCase();  
+                // console.log(marketItemData)              
+
+                return marketItemData.includes(searchMarketItem.toLowerCase()) && marketCategoryData.includes(marketCategory.toLowerCase()) && marketLocationData.includes(searchMarketLocation.toLowerCase())
+            })
+            setMarketList(filterMarketList)
         })
         .catch((error) => console.error(error))
     }
+
+    const [ searchMarketItem, setSearchMarketItem ] = useState('');
+    const MarketItemOnChange = (e) => {
+        setSearchMarketItem(e.target.value)
+        console.log('this is market category', searchMarketItem)
+    }
+
+    const [ searchMarketLocation, setSearchMarketLocation] = useState('');
+    const MarketLocationOnChange = (e) => {
+        setSearchMarketLocation(e.target.value)
+        console.log('this is market category', searchMarketLocation)
+    }
+
+    const [popup, setPopup] = useState(false)
 
     return (
         <div className='marketFooter'>
@@ -126,8 +129,8 @@ function Market() {
                         <label> Items </label>
                         <input
                         name='item'
-                        onChange={MarketOnChange} 
-                        value={market.item}
+                        onChange={MarketItemOnChange} 
+                        value={searchMarketItem}
                         
                         />
 
@@ -135,13 +138,13 @@ function Market() {
                         
                         <input
                         name='location'
-                        onChange={MarketOnChange} 
-                        value={market.location}
+                        onChange={MarketLocationOnChange} 
+                        value={searchMarketLocation}
 
                         />
 
                         <PopUp popup={popup} />                        
-                        <button onClick={onSubmit} id='button' disabled={!market.item || !market.location }> Check Price </button> 
+                        <button onClick={MarketListOnSubmit} id='button' disabled={!searchMarketItem || !searchMarketLocation || !marketCategory }> Check Price </button> 
                     </form>
                 </div>
             </div>
