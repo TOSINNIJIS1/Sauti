@@ -8,36 +8,29 @@ import Signout from '../dashboard/signout'
 import axiosWithAuth from '../auth/authWithAuth'
 import axios from 'axios';
 
-function Market() {
 
-    const token = localStorage.getItem('token')
-    
+function Market() {    
     const [market, setMarket] = useState({
         category: '',
         item: '',
         location: ''
     })
 
-    const [marketList, setMarketList] = useState([])
-
-    console.log(marketList, 'market')
-
-    // useEffect(() => {
-    //     getProducts()
-    // })
-
-    const getProducts = () => {
-        axios.get('http://localhost:1000/api/products', {
-            headers: { "Authorization": `Bearer ${token}` }
+    const MarketOnChange = (e) => {
+        setMarket({
+            ...market, [e.target.name]: e.target.value
         })
-        .then((res) => {
-            setMarketList(res.data)
-            console.log(res.data)
-        })
-        .catch((error) => console.error(error))
     }
 
-    
+
+    const [marketCategory, setMarketCategory] = useState('')
+
+    const MarketCategoryOnChange = (e) => {
+        setMarketCategory(e.target.value)
+        console.log('this is market category', marketCategory)
+    }
+
+    const [marketList, setMarketList] = useState([])
     
     const [category, setCategory] = useState('');
     const [ item, setItem ] = useState('');
@@ -52,21 +45,17 @@ function Market() {
         setItem(e.target.value)
     }
 
-    const locationChange = (e) => {
+    const MarketOocationChange = (e) => {
         setLocation(e.target.value)
     }
 
-    const onChange = (e) => {
-        setMarket({
-            ...market, [e.target.name]: e.target.value
-        })
-    }
 
     const [popup, setPopup] = useState(false)
 
 
     const onSubmit = (e) => {
         e.preventDefault();
+        let token = localStorage.getItem('token')
 
 
         axios.get('http://localhost:1000/api/products', {
@@ -121,7 +110,7 @@ function Market() {
                     
                     <form id='market'>
                         <label > Category </label>
-                        <select name='category' value={market.category}>
+                        <select name='category' value={marketCategory} onChange={MarketCategoryOnChange}>
                             <option value=""> Select Product </option>
                             <option value="animal products"> Animal Products </option>
                             <option value="beans"> Beans </option>
@@ -137,7 +126,7 @@ function Market() {
                         <label> Items </label>
                         <input
                         name='item'
-                        onChange={onChange} 
+                        onChange={MarketOnChange} 
                         value={market.item}
                         
                         />
@@ -146,7 +135,7 @@ function Market() {
                         
                         <input
                         name='location'
-                        onChange={onChange} 
+                        onChange={MarketOnChange} 
                         value={market.location}
 
                         />
