@@ -103,6 +103,7 @@ function Market() {
                         <Signout />
 
                     </div>
+                    <NavAll />
 
                 <div className='profileRight' style={{marginTop: '5%'}}>
                     

@@ -13,15 +13,33 @@ const Background = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+
+    @media only screen and (max-width: 600px) {
+        // border: solid red;
+        // width: 300px;
+        display: flex;
+        margin-left: 35px;
+        justify-content: center;
+    }
 `;
 
 const ModalWrapper = styled.div`
     margin: 0 auto;
     width: 600px;
-    // height: 650px;
     box-shadow: 0 5px 16px rgba(0, 0, 0, 0.2);
     background: #fff;
     border-radius: 10px;
+    border: solid;
+
+    @media only screen and (max-width: 600px) {
+        border: solid red;
+        width: 300px;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 90px;
+
+    }
+
 `;
 
 const ModalContent = styled.div`
@@ -30,6 +48,7 @@ const ModalContent = styled.div`
     justify-content: center;
     align-items: center;
     line-height: 1.8;
+    
 `;
 
 const CloseModalButton = styled(CloseIcon)`
@@ -102,7 +121,7 @@ function PopUp ({popup, marketList, setPopUp}) {
                             </button>
                             
                             <button>
-                                <Link to='/'>
+                                <Link to='/' style={{color: 'white'}}>
                                     Home
                                 </Link>
                             </button>
