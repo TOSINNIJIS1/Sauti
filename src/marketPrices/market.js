@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import {Link} from 'react-router-dom';
 import Footer from '../footer/footer';
 import NavAll from '../NavForAll/NavAll';
-import './market.scss';
+import './styles/market.scss';
 import PopUp from './PopUp';
 import Signout from '../dashboard/signout'
 import axiosWithAuth from '../auth/authWithAuth'
@@ -10,19 +10,6 @@ import axios from 'axios';
 
 
 function Market() {    
-    const [market, setMarket] = useState({
-        category: '',
-        item: '',
-        location: ''
-    })
-
-    const MarketOnChange = (e) => {
-        setMarket({
-            ...market, [e.target.name]: e.target.value
-        })
-    }
-
-
     const [marketCategory, setMarketCategory] = useState('')
 
     const MarketCategoryOnChange = (e) => {
@@ -48,11 +35,11 @@ function Market() {
                 let marketItemData = products.item.toString().toLowerCase();
                 let marketCategoryData = products.category.toString().toLowerCase();
                 let marketLocationData = products.location.toString().toLowerCase();  
-                // console.log(marketItemData)              
-
+                    
                 return marketItemData.includes(searchMarketItem.toLowerCase()) && marketCategoryData.includes(marketCategory.toLowerCase()) && marketLocationData.includes(searchMarketLocation.toLowerCase())
             })
             setMarketList(filterMarketList)
+            openPopUp()
         })
         .catch((error) => console.error(error))
     }
@@ -69,7 +56,17 @@ function Market() {
         console.log('this is market category', searchMarketLocation)
     }
 
-    const [popup, setPopup] = useState(false)
+    const [popUp, setPopUp] = useState(false)
+    
+    const openPopUp = () => {
+        setPopUp(prev => !prev);
+    };
+
+    const [closePopUp, setClosePopUp] = useState(true)
+
+    const ClosePopUp = () => {
+        setClosePopUp(prev => !prev);
+    };
 
     return (
         <div className='marketFooter'>
@@ -87,7 +84,7 @@ function Market() {
                             </Link>
 
                             <Link to='/market'>
-                                <h4> Market Price </h4>
+                                <h4 style={{color: 'white'}}> Market Price </h4>
                             </Link>
 
                             <Link to='/list'>
@@ -99,7 +96,7 @@ function Market() {
                             </Link>
                             
                             <Link to='/product' >
-                                <h4 style={{color: 'white'}}> Add Product </h4>
+                                <h4> Add Product </h4>
                             </Link>
                         </nav>
 
@@ -143,8 +140,18 @@ function Market() {
 
                         />
 
-                        <PopUp popup={popup} />                        
-                        <button onClick={MarketListOnSubmit} id='button' disabled={!searchMarketItem || !searchMarketLocation || !marketCategory }> Check Price </button> 
+                        <PopUp 
+                        popup={popUp} 
+                        setPopUp={setPopUp}
+                        marketList = {marketList} 
+                        />                        
+                        
+                        <button 
+                        onClick={MarketListOnSubmit} 
+                        id='button' 
+                        disabled={!searchMarketItem || !searchMarketLocation || !marketCategory }
+                        
+                        > Check Price </button> 
                     </form>
                 </div>
             </div>
