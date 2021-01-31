@@ -81,9 +81,7 @@ function CardList () {
                         <button> Edit </button>
                     </div>
                 </div>
-                
             ))}
-
                 
             </div>
             <Footer />

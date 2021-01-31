@@ -25,7 +25,7 @@ function Market() {
         let token = localStorage.getItem('token')
 
 
-        axios.get('http://localhost:1000/api/products', {
+        axiosWithAuth().get('/products', {
             headers: { "Authorization": `Bearer ${token}` }
         })
         .then((res) => {
@@ -62,11 +62,6 @@ function Market() {
         setPopUp(prev => !prev);
     };
 
-    const [closePopUp, setClosePopUp] = useState(true)
-
-    const ClosePopUp = () => {
-        setClosePopUp(prev => !prev);
-    };
 
     return (
         <div className='marketFooter'>
