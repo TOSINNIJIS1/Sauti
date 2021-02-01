@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './style/product.scss';
 // import axios from 'axios';
 import Upload from './image/upload.png';
@@ -9,7 +9,7 @@ import Signout from '../dashboard/signout';
 import axiosWithAuth from '../auth/authWithAuth'
 import axios from 'axios';
 
-let CATEGORIES = ['Clothes', 'Shoes', 'Jewelries', 'Cereal']
+let CATEGORIES = ['Clothes', 'Shoes', 'Jewelries', 'Animal Products', 'Beans', 'Cereal', 'Fruits', 'Vegetables', 'Seeds & Nuts', 'Other', 'Peas', 'Roots & Tubers', 'Cereals']
 
 
 function ProductInfo (props) {
@@ -18,19 +18,19 @@ function ProductInfo (props) {
         category: '',
         item: '',
         description: '',
-        price: ''
+        price: '',
+        image: '',
+        preview: ''
     })
+    console.log(product.image, 'image here')
 
-    const PostRequest = (e) => {
-        
-    }
+    // const [category, setCategory] = useState('')
 
-    const [category, setCategory] = useState('')
+    // const categoryOnChange = e => {
+    //     setProduct(e.target.value)
+    //     console.log("This is the category", e.target)
+    // } 
 
-    const categoryOnChange = e => {
-        setCategory(e.target.value)
-        console.log("This is the category", category)
-    } 
 
     const target = (e) => {
         return ({target: { value }}) => {
@@ -43,53 +43,73 @@ function ProductInfo (props) {
 
     // Image start here
 
-    const [imageState, setImageStage] = useState({
-        image: '', 
-        preview: ''
-    })
+
     
     const handleChange = e => {
-        console.log(e)
-        if (e.target.files.length) {
-            setImageStage({
+
+            setProduct({
                 preview: URL.createObjectURL(e.target.files[0]),
                 image: e.target.files[0]
             });
-        }
+        // };
     };
 
-    // const addProduct = 
-    const token = localStorage.getItem('token')
+    const handleSubmit = async (e) => {
+        const token = localStorage.getItem('token');
 
-    const addProduct = async (e) => {
+        console.log(token, 'this is the token')
 
-        axiosWithAuth().post('/products', product, {
+        e.preventDefault();
+        const formData = new FormData();
+        formData.append("image", product.image);
+        formData.append("item", product.item);
+        formData.append("description", product.description);
+        formData.append("price", product.price);
+        formData.append("category", product.category);
+        formData.append("location", product.location);
+        formData.append("preview", product.preview);
+
+        axios.post('http://localhost:1000/api/products/', formData
+        , {
             headers: { 
-                "Authorization": `Bearer ${token}`,
+                'Authorization': `Bearer ${token}`,
             }
-        }) 
+        }
+        ) 
         .then(res => {
             console.log(res)
-            setProduct(res.data)
+            axiosWithAuth().get('/products' + res.data._id)
+            
         })
-        .catch(error => console.log(error, 'meh'))
+        .catch(error => console.log(error, 'big bang'))
     }
 
-    const getProduct = ()  => axios.get('https://sauti-market-app.herokuapp.com/api/products')
-    const handleSubmit = () => {
-        axios.all([getProduct()])
-        .then(
-            axios.spread((...response) => {
-                let res = response[0]
-                console.log(res)
-            })
-        )
-        .catch(error => console.log('blehhh', error))
+    const [testImage, setTestImage] = useState([])
 
-    } 
+    useEffect(() => {
+        getClick()
+    },[])
+
+    // console.log())
+
+    const getClick = () => {
+        const token = localStorage.getItem('token');
+        axiosWithAuth().get('/products', {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        })
+        .then(res => {
+            console.log(res)
+            setTestImage(res.data)
+        })
+        .catch(error => console.log(error))
+    }
+
 
     return (
         <div>
+            
             <div className='productCont'>
                 <NavAll />
                 <div className='left'>
@@ -123,27 +143,31 @@ function ProductInfo (props) {
                 </div>
     
                 <div className='right'>
-                    <form>
+                    <form onSubmit={handleSubmit}> 
                         <label> Location </label>
                         <input required
                         type='text'
                         value={product.location}
                         onChange={target('location')}
                         />
-                        <label> Category </label>
-                        <input required
-                        value={product.category}
-                        onChange={target('category')}
-                        />
-                        
-                        {/* <select required
-                        value={category} 
-                        value={product.category}
 
-                        onChange={categoryOnChange}> 
-                            <option value={product.category} onChange={target('category')}> Select </option> 
+                        <label> Category </label>
+                        {/* <input required
+                        type='text'
+                        // value={product.category}
+                        // onChange={target('category')}
+                        /> */}
+
+                        
+                        
+                        <select required
+                        value={product.category} 
+                        onChange={target('category')}
+                        // name='category'
+                        > 
+                            <option > Select </option> 
                             {CATEGORIES.map((data, i) => <option key={i}> {data} </option> )}
-                        </select> */}
+                        </select>
                         
                         <label> Item </label>
                         <input required
@@ -163,9 +187,9 @@ function ProductInfo (props) {
                         
                         <label className='up'> Upload Image </label>
                         <label htmlFor='upload-button'>  
-                            {imageState.preview 
+                            {product.preview 
                             ? (
-                                <img src={imageState.preview} alt='preview' maxWidth='100%' maxWidth='100%' minWidth='80%' height='250px' />
+                                <img src={product.preview} alt='preview' maxWidth='100%' maxWidth='100%' minWidth='80%' height='250px' />
                             ) : (
                                 <div className='upload'>
                                 <img src={Upload} alt='upload' />
@@ -175,17 +199,22 @@ function ProductInfo (props) {
                         
                         <input required 
                         type='file'
-                        name='image'
-                        class='filepond'
                         id='upload-button'
                         style={{display: 'none'}}        
-                        onClick={handleChange}              
+                        onChange={handleChange}              
                         />
                         
-                        <button 
-                        onClick={handleSubmit}
+                        <button type='submit'
+                        // onClick={handleSubmit}
                         > Add Product </button>
                     </form>
+                </div>
+                <div>
+                    {
+                        testImage.map(a => (
+                            <div> <img src={a.image} /> </div>
+                        ))
+                    }
                 </div>
             </div>
         </div>
