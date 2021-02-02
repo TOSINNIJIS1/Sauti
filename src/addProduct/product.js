@@ -8,28 +8,24 @@ import Footer from '../footer/footer'
 import Signout from '../dashboard/signout';
 import axiosWithAuth from '../auth/authWithAuth'
 import axios from 'axios';
+import emptyImage from './image/empty.jpg'
 
 let CATEGORIES = ['Clothes', 'Shoes', 'Jewelries', 'Animal Products', 'Beans', 'Cereal', 'Fruits', 'Vegetables', 'Seeds & Nuts', 'Other', 'Peas', 'Roots & Tubers', 'Cereals']
 
 
-function ProductInfo (props) {
+function ProductInfo () {
     const [product, setProduct] = useState({
         location: '',
         category: '',
         item: '',
         description: '',
         price: '',
-        image: '',
-        preview: ''
     })
-    console.log(product.image, 'image here')
-
-    // const [category, setCategory] = useState('')
-
-    // const categoryOnChange = e => {
-    //     setProduct(e.target.value)
-    //     console.log("This is the category", e.target)
-    // } 
+    
+    const [fileProduct, setFileProduct] = useState({
+        image: '',
+        // empty: emptyImage
+    })
 
 
     const target = (e) => {
@@ -40,70 +36,43 @@ function ProductInfo (props) {
         }
     }    
 
-
     // Image start here
-
-
-    
     const handleChange = e => {
-
-            setProduct({
-                preview: URL.createObjectURL(e.target.files[0]),
-                image: e.target.files[0]
-            });
-        // };
+        setFileProduct({
+            preview: URL.createObjectURL(e.target.files[0]),
+            image: e.target.files[0]
+        })    
     };
 
     const handleSubmit = async (e) => {
+        e.preventDefault();
+
         const token = localStorage.getItem('token');
 
-        console.log(token, 'this is the token')
-
-        e.preventDefault();
         const formData = new FormData();
-        formData.append("image", product.image);
+        formData.append("image", fileProduct.image);
         formData.append("item", product.item);
         formData.append("description", product.description);
         formData.append("price", product.price);
         formData.append("category", product.category);
         formData.append("location", product.location);
-        formData.append("preview", product.preview);
 
-        axios.post('http://localhost:1000/api/products/', formData
-        , {
-            headers: { 
+
+        for (let obj of formData) {
+            console.log(obj, 'obj of formData')
+        }
+
+        const config = {
+            headers: {
+                // 'content-type': 'multipart/form-data',
                 'Authorization': `Bearer ${token}`,
             }
-        }
-        ) 
-        .then(res => {
-            console.log(res)
-            axiosWithAuth().get('/products' + res.data._id)
-            
-        })
+        };
+
+
+        axios.post('http://localhost:1000/api/products/', formData, config ) 
+        .then(res => console.log(res.data))
         .catch(error => console.log(error, 'big bang'))
-    }
-
-    const [testImage, setTestImage] = useState([])
-
-    useEffect(() => {
-        getClick()
-    },[])
-
-    // console.log())
-
-    const getClick = () => {
-        const token = localStorage.getItem('token');
-        axiosWithAuth().get('/products', {
-            headers: {
-                'Authorization': `Bearer ${token}`
-            }
-        })
-        .then(res => {
-            console.log(res)
-            setTestImage(res.data)
-        })
-        .catch(error => console.log(error))
     }
 
 
@@ -143,27 +112,19 @@ function ProductInfo (props) {
                 </div>
     
                 <div className='right'>
-                    <form onSubmit={handleSubmit}> 
+                    <form enctype="multipart/form-data"> 
                         <label> Location </label>
                         <input required
                         type='text'
-                        value={product.location}
+                        name='location'
                         onChange={target('location')}
                         />
 
                         <label> Category </label>
-                        {/* <input required
-                        type='text'
-                        // value={product.category}
-                        // onChange={target('category')}
-                        /> */}
 
-                        
-                        
                         <select required
-                        value={product.category} 
+                        name='category'
                         onChange={target('category')}
-                        // name='category'
                         > 
                             <option > Select </option> 
                             {CATEGORIES.map((data, i) => <option key={i}> {data} </option> )}
@@ -171,25 +132,28 @@ function ProductInfo (props) {
                         
                         <label> Item </label>
                         <input required
-                        value={product.item}
+                        name='item'
                         onChange={target('item')}
                         />
                         <label> Description </label>
                         <input required
-                        value={product.description}
+                        name='description'
                         onChange={target('description')}
                         />
                         <label> Price </label>
                         <input required
-                        value={product.price}
+                        name='price'
                         onChange={target('price')}
                         />
                         
                         <label className='up'> Upload Image </label>
                         <label htmlFor='upload-button'>  
-                            {product.preview 
+                            {fileProduct.preview 
                             ? (
-                                <img src={product.preview} alt='preview' maxWidth='100%' maxWidth='100%' minWidth='80%' height='250px' />
+                                <img 
+                                src={fileProduct.preview} 
+                                onClick={() => setFileProduct({preview: null, image: null})}
+                                alt='preview' maxWidth='100%' maxWidth='100%' minWidth='80%' height='250px' />
                             ) : (
                                 <div className='upload'>
                                 <img src={Upload} alt='upload' />
@@ -197,24 +161,18 @@ function ProductInfo (props) {
                             )}
                         </label>
                         
-                        <input required 
+                        {/* <input type="hidden" name="MAX_FILE_SIZE" value="2000000" /> */}
+                        <input 
+                        // required 
+                        name='image'
                         type='file'
                         id='upload-button'
                         style={{display: 'none'}}        
                         onChange={handleChange}              
                         />
                         
-                        <button type='submit'
-                        // onClick={handleSubmit}
-                        > Add Product </button>
+                        <button type='submit' onClick={(e) => handleSubmit(e)}> Add Product </button>
                     </form>
-                </div>
-                <div>
-                    {
-                        testImage.map(a => (
-                            <div> <img src={a.image} /> </div>
-                        ))
-                    }
                 </div>
             </div>
         </div>
