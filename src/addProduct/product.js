@@ -66,7 +66,7 @@ function ProductInfo () {
             }
         };
 
-        axios.post('http://localhost:1000/api/products/', formData, config ) 
+        axios.post('https://sauti-market-app.herokuapp.com/api/products/', formData, config ) 
         .then(res => { 
             setProductList(res.data); 
             openProductPopUp()
