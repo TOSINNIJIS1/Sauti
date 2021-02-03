@@ -10,6 +10,7 @@ import Profile from './profile/profile';
 import Market from './marketPrices/market';
 import './listPage/styles/list.scss';
 import PrivateRoute from './auth/protectedRoute';
+import Mahiya from './mahiya';
 
 
 function App() {
@@ -33,7 +34,7 @@ function App() {
           <Route path='/list' component={ ListProduct } />
           <Route path='/profile' component = { Profile } />
           <Route path='/product' component = { Product } />
-          <Route render={() => <h1> Page not found </h1>} />
+          <Route path='/mahiya' render={() => <Mahiya  />} />
         </Switch>
       </Router>
     </div>
