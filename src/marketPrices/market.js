@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import {Link} from 'react-router-dom';
 import Footer from '../footer/footer';
 import NavAll from '../NavForAll/NavAll';
@@ -6,7 +6,6 @@ import './styles/market.scss';
 import PopUp from './PopUp';
 import Signout from '../dashboard/signout'
 import axiosWithAuth from '../auth/authWithAuth'
-import axios from 'axios';
 
 
 function Market() {    
@@ -25,7 +24,7 @@ function Market() {
         let token = localStorage.getItem('token')
 
 
-        axios.get('http://localhost:1000/api/products', {
+        axiosWithAuth().get('/products', {
             headers: { "Authorization": `Bearer ${token}` }
         })
         .then((res) => {
