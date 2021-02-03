@@ -18,18 +18,19 @@ function Market() {
     }
 
     const [marketList, setMarketList] = useState([])
-    console.log(marketList)
+    console.log(marketList, 'this is market')
 
     const MarketListOnSubmit = (e) => {
         e.preventDefault();
         let token = localStorage.getItem('token')
 
 
-        axiosWithAuth().get('/products', {
+        axios.get('http://localhost:1000/api/products', {
             headers: { "Authorization": `Bearer ${token}` }
         })
         .then((res) => {
             const result = res.data
+            console.log(res)
 
             let filterMarketList = result.filter(products => {
                 let marketItemData = products.item.toString().toLowerCase();

@@ -1,35 +1,40 @@
 import React, { useState } from 'react';
 import './styles/list.scss';
-import firstImage from './images/cristian-newman-tnxRFtXI9dI-unsplash.png';
-import secondImage from './images/dollar-gill-NY82qt3niy8-unsplash 1.png';
-import thirdImage from './images/nana-andoh-PX3WTTgNqs8-unsplash.png'
 import Edit from './edit';
 import { Link } from 'react-router-dom';
 import NavAll from '../NavForAll/NavAll';
 import Footer from '../footer/footer'
-
+import axiosWithAuth from '../auth/authWithAuth'
+import Pagination from '../pagination/pagination';
 
 function CardList () {
-    const [card] = useState([
-        {
-            image: `${firstImage}`,
-            category: 'Shirt',
-            price: '2109.450',
-            item: 'Blue v-neck short sleeve shirt'
-        },
-        {
-            image: `${secondImage}`,
-            category: 'Shirt',
-            price: '2305.150',
-            item: 'Blue striped medium long sleeve'
-        },
-        {
-            image: `${thirdImage}`,
-            category: 'Shirt',
-            price: '1909.450',
-            item: 'White letter short sleeve shirt'
-        }
-    ])
+    const [ list, setList ] = useState([])
+
+    const [currentPage, setCurrentPage] = useState(1)
+    const [listPerPage] = useState(3)
+
+    const indexOfLastPost = currentPage * listPerPage;
+    const indexOfFirstPost = indexOfLastPost - listPerPage;
+    const currentProducts = list.slice(indexOfFirstPost, indexOfLastPost);
+
+    const paginate = (pageNumber) => setCurrentPage(pageNumber)
+
+    React.useEffect(() => {
+        GetRequest()
+    },[])
+
+    const GetRequest = () => {
+        let  token = localStorage.getItem('token')
+        axiosWithAuth().get('/products', {
+            headers: {
+                authorization: `Bearer ${token}`
+            }
+        })
+        .then(res => {
+            setList(res.data)
+        })
+        .catch(error => console.log(error))
+    }
 
 
     return (
@@ -71,18 +76,21 @@ function CardList () {
 
 
             
-            {card.map (data => (
+            {currentProducts.map (data => (
                 <div className='card'>
-                    <img src={data.image} alt='cristian newman'  />
+                    <img src={data.image} alt='image'  style={{objectFit: 'cover'}}  />
                     
                     <div className='category'>
                         <h1> {data.category} {data.price} </h1>
                         <p> {data.item} </p>
+                        <Link to='/edit'>
                         <button> Edit </button>
+                        </Link>
                     </div>
                 </div>
             ))}
-                
+                                    <Pagination pagine={paginate} length={list.length} page={listPerPage} />
+
             </div>
             <Footer />
 

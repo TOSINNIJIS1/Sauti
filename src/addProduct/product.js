@@ -1,17 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import './style/product.scss';
-// import axios from 'axios';
 import Upload from './image/upload.png';
 import {Link} from 'react-router-dom';
 import NavAll from '../NavForAll/NavAll'
 import Footer from '../footer/footer'
 import Signout from '../dashboard/signout';
-import axiosWithAuth from '../auth/authWithAuth'
 import axios from 'axios';
-import emptyImage from './image/empty.jpg'
+import PopUp from './productPopUp';
 
-let CATEGORIES = ['Clothes', 'Shoes', 'Jewelries', 'Animal Products', 'Beans', 'Cereal', 'Fruits', 'Vegetables', 'Seeds & Nuts', 'Other', 'Peas', 'Roots & Tubers', 'Cereals']
-
+let CATEGORIES = ['Clothes', 'Shoes', 'Shirt', 'Jewelries', 'Animal Products', 'Beans', 'Cereal', 'Fruits', 'Vegetables', 'Seeds & Nuts', 'Other', 'Peas', 'Roots & Tubers', 'Cereals']
 
 function ProductInfo () {
     const [product, setProduct] = useState({
@@ -21,12 +18,14 @@ function ProductInfo () {
         description: '',
         price: '',
     })
+
+
+    const [ productList, setProductList ] = useState([])
+    console.log(productList, 'list')
     
     const [fileProduct, setFileProduct] = useState({
         image: '',
-        // empty: emptyImage
     })
-
 
     const target = (e) => {
         return ({target: { value }}) => {
@@ -46,7 +45,6 @@ function ProductInfo () {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
         const token = localStorage.getItem('token');
 
         const formData = new FormData();
@@ -57,10 +55,9 @@ function ProductInfo () {
         formData.append("category", product.category);
         formData.append("location", product.location);
 
-
-        for (let obj of formData) {
-            console.log(obj, 'obj of formData')
-        }
+        // for (let obj of formData) {
+        //     console.log(obj, 'obj of formData')
+        // }
 
         const config = {
             headers: {
@@ -69,12 +66,19 @@ function ProductInfo () {
             }
         };
 
-
         axios.post('http://localhost:1000/api/products/', formData, config ) 
-        .then(res => console.log(res.data))
+        .then(res => { 
+            setProductList(res.data); 
+            openProductPopUp()
+        })
         .catch(error => console.log(error, 'big bang'))
     }
 
+    const [productPopUp, setProductPopUp] = useState(false)
+    
+    const openProductPopUp = () => {
+        setProductPopUp(prev => !prev);
+    };
 
     return (
         <div>
@@ -170,6 +174,12 @@ function ProductInfo () {
                         style={{display: 'none'}}        
                         onChange={handleChange}              
                         />
+
+                        <PopUp 
+                        productPopup={productPopUp} 
+                        setProductPopUp={setProductPopUp}
+                        productList = {productList} 
+                        />      
                         
                         <button type='submit' onClick={(e) => handleSubmit(e)}> Add Product </button>
                     </form>
