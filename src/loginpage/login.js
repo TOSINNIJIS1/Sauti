@@ -82,8 +82,9 @@ function Login(props) {
                             <p> Forgot Password </p>
                         </div>
                     </form>
-                    <Footer />
                 </div>
+                <Footer />
+
 
             </div>
     )

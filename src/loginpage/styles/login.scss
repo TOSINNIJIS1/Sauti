@@ -2,7 +2,7 @@
     display: flex;
     max-width: 100%;
     width: 100%;
-    height: 100%;
+    height: 100vh;
 
     .left {
         background-color: #20141D;
@@ -177,6 +177,22 @@
         flex-direction: column;
         min-height: 100vh;
         // border: solid red 1px;
+        // flex: 1;
+
+        .footer {
+            // height: 100%;
+            flex: 1;
+            // border: solid red;
+            display: flex;
+            // position: relative;
+            // bottom: 0px;
+            // margin-top: 550%;
+            justify-content: center;
+            align-items: center;  
+            // width: 100%;
+            padding: 3% 0;
+            // margin: 0;
+        }
 
         .login {
             display: none;
@@ -190,22 +206,11 @@
             font-family: Poppins;
             width: 100%;
             margin: 0 auto;
-            flex: 1;
+            display: flex;
+            flex-direction: column;
 
-            .footer {
-                height: 100%;
-                flex: 1;
-                // border: solid red;
-                display: flex;
-                position: relative;
-                bottom: 0;
-                margin-top: 20%;
-                justify-content: center;
-                align-items: center;  
-                // width: 100%;
-                // padding: 5% 0;
-                // margin: 0;
-            }
+
+            
 
             h1 {
                 font-style: normal;
