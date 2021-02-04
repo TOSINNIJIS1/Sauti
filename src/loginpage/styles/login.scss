@@ -68,7 +68,7 @@
         }
     }
 
-    .right {
+    .registerRight {
         width: 50vw;
 
         h1 {
@@ -185,7 +185,7 @@
             display: none;
         }
 
-        .right {
+        .registerRight {
             font-family: Poppins;
             width: 100%;
             margin: 0 auto;
@@ -239,11 +239,10 @@
         }
         .footer {
             display: flex;
-            // border: solid red;
-            position: absolute;
+            position: relative;
             bottom: 0;
+            margin-top: 20%;
             width: 100%;
-            // margin-top: 20%;
             padding: 3% 0;
         }
     }

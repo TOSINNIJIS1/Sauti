@@ -47,7 +47,7 @@ function Login(props) {
                 </div>
                 <Left />
 
-                <div className='right'>
+                <div className='registerRight'>
                     <h1> Sign In </h1>
 
                     <form onSubmit={onSubmit}>
