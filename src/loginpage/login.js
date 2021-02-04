@@ -77,14 +77,12 @@ function Login(props) {
                             <button id='demo' > Demo Login </button>
                         </Link> */}
                         {/* <Popup popup={popup} setPopup={setPopup} /> */}
+                        <div className='else'>
+                            <p> No account <Link to='/register'><b style={{color: '#20141D'}}> Sign Up! </b> </Link></p>
+                            <p> Forgot Password </p>
+                        </div>
                     </form>
-
-                    <div className='else'>
-                        <p> No account <Link to='/register'><b style={{color: '#20141D'}}> Sign Up! </b> </Link></p>
-                        <p> Forgot Password </p>
-                    </div>
                     <Footer />
-
                 </div>
 
             </div>
