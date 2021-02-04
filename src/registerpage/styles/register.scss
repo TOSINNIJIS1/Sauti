@@ -137,7 +137,7 @@
 }
 
 .regFooter > .footer {
-    margin-top: 30%;
+    margin-top: 10%;
     display: none;
 }
 
@@ -175,11 +175,21 @@
         }
     }
 
-    .regFooter > .footer {
+    .regFooter {
         display: flex;
-        position: relative;
-        padding: 3% 0;
-        width: 100%;
+        flex-direction: column;
+        min-height: 100vh;
+        flex: 1;
+
+        .footer {
+            display: flex;
+            // position: relative;
+            padding: 3% 0;
+            justify-content: center;
+            align-items: center;  
+            width: 100%;
+            flex: 1;
+        }
     }
 
     .allNav {
