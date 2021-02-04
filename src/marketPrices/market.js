@@ -149,9 +149,10 @@ function Market() {
                         
                         > Check Price </button> 
                     </form>
+                    <Footer />
+
                 </div>
             </div>
-            <Footer />
         </div>
     )
 }
