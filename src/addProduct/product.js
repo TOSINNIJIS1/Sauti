@@ -185,6 +185,8 @@ function ProductInfo () {
                         
                         <button type='submit' onClick={(e) => handleSubmit(e)}> Add Product </button>
                     </form>
+                    <Footer />
+
                 </div>
             </div>
         </div>
@@ -197,7 +199,6 @@ export default function Product() {
     return (
         <div className='prodFooter'>
             <ProductInfo />
-            <Footer />
         </div>
     )
     
