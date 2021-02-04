@@ -100,7 +100,7 @@ function Market() {
                     </div>
                     <NavAll />
 
-                <div className='profileRight' style={{marginTop: '10%'}}>
+                <div className='marketRight' style={{marginTop: '10%'}}>
                     
                     <h1> Market Price Check </h1> 
                     
