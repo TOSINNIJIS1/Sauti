@@ -17,7 +17,8 @@ export default function Pagination ({pagine, page, length}) {
                         <button style={{
                             width: '90%',
                             padding: '10px',
-                            margin: '5px'
+                            margin: '5px',
+                            marginBottom: '15vh'
                         }} >{num}</button>
                     </div>
                 </div>
