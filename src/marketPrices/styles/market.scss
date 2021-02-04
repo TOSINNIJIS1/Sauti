@@ -52,11 +52,12 @@
         height: 100vh;
 
         .footer {
-            // position: fixed;
+            position: absolute;
             display: flex;
-            
-            // margin: 0;
-            // bottom: 0;
+            padding: 3% 0;
+            width: 100%;
+            margin: 0;
+            bottom: 0;
             
         }
     }
@@ -94,13 +95,6 @@
 
 
             
-        }
-
-        
-        .footer {
-            display: flex;
-            padding: 0;
-            margin: 0;
         }
 
         #button {

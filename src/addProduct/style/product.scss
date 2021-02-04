@@ -1,6 +1,8 @@
 .productCont {
     display: flex;
-    height: 100vh;
+    height: 100%;
+    // position: relative;
+    // border: solid;
 
     .left {
         width: 30vw;
@@ -63,7 +65,7 @@
             font-size: 18px;
             bottom: 0;
             margin: 0 auto;
-            margin-left: 3%;
+            // margin-left: 3%;
         }
     }
 
@@ -153,6 +155,8 @@
     .productCont {
         display: flex;
         flex-direction: column;
+        height: 100%;
+        width: 100%;
 
         .login {
             display:  none;
@@ -184,7 +188,7 @@
             }
 
             button {
-                margin-top: 20%;
+                margin-top: 10%;
             }
 
             
@@ -198,7 +202,10 @@
     .prodFooter {
         .footer {
             display: flex;
-            margin-top: 20%;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            padding: 3% 0;
         }
     }
 }

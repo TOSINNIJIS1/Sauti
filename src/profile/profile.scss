@@ -73,6 +73,12 @@
 
 @media only screen and (max-width: 600px) {
     
+    .profileRight > .footer {
+        position: relative;
+        bottom: 0;
+        // padding: 3% 0;
+    }
+
     .button {
         button:nth-child(1) {
             display: none;

@@ -40,7 +40,7 @@ function Login(props) {
     }
 
     return (
-        <div class='forFooter'>
+        // <div class='forFooter'>
             <div className='logContainer'>
                 <div className='navReg'>
                     <NavAll />
@@ -84,9 +84,9 @@ function Login(props) {
                         <p> Forgot Password </p>
                     </div>
                 </div>
+                <Footer />
+
             </div>
-            <Footer />
-        </div>
     )
 }
 

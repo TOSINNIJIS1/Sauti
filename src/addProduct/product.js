@@ -89,6 +89,8 @@ function ProductInfo () {
                     <h1> Sauti </h1>
                     <hr />
 
+                    <h3> Add Product </h3> 
+
                     <nav style={{cursor: 'pointer'}}>
                         <Link to='/'>
                             <h4> Home </h4>
@@ -107,7 +109,7 @@ function ProductInfo () {
                         </Link>
                         
                         <Link to='/product' >
-                            <h4 style={{color: 'white'}}> Add Product </h4>
+                            <h4 style={{color: 'white'}}> Product </h4>
                         </Link>
                     </nav>
 

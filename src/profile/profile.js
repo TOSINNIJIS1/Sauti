@@ -6,10 +6,9 @@ import {Link} from 'react-router-dom'
 import NavAll from '../NavForAll/NavAll';
 import Footer from '../footer/footer';
 import Signout from '../dashboard/signout'
-import UserContext from '../context/userContext';
 
 export default function Profile () {
-    const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')))
+    const [user] = useState(JSON.parse(localStorage.getItem('user')))
 
     return (
         <div className='listContainer'>
@@ -85,8 +84,9 @@ export default function Profile () {
                     <button id='btnUpdate' onClick={(e) => {e.preventDefault()}} > Update </button>
                     </div>
                 </form>
+                <Footer />
+
             </div>
-            <Footer />
 
         </div>
     )

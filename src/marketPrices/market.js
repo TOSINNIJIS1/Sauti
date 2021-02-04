@@ -65,13 +65,13 @@ function Market() {
 
     return (
         <div className='marketFooter'>
-
             <div className='listContainer'>
                 
-
             <div className='left'>
                         <h1> Sauti </h1>
                         <hr />
+
+                        <h3> Market Price </h3> 
 
                         <nav style={{cursor: 'pointer'}}>
                             <Link to='/'>
