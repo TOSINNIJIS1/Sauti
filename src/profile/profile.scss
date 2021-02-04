@@ -78,17 +78,13 @@
         bottom: 0;
         // padding: 3% 0;
     }
-
+    
     .button {
-        button:nth-child(1) {
+        button {
             display: none;
-            border: solid red;
         }
+    }
 
-        button:nth-child(2) {
-            display: none;
-            border: solid red;
-        }
 
         .update {
             display: flex;
@@ -101,6 +97,5 @@
             justify-content: center;
             margin-bottom: 30%;
         }
-    }
     
 }
