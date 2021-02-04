@@ -120,8 +120,6 @@ function Register (history) {
 
 
 function Registration (props) {
-    console.log(props,'another one')
-
     return (
         <div className='regFooter'>
             <Register history={props.history} />
