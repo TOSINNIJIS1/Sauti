@@ -45,14 +45,14 @@
 
 @media only screen and (max-width: 600px) {
     .marketFooter {
-        // border: solid red;
-// position: relative;
-        // height: 0;
+        border: solid red;
+        height: 0%;
         margin-bottom: 0;
-        height: 100vh;
+        // height: 95vh;
 
         .footer {
-            // position: relative;
+            // height: 3%;
+            position: absolute;
             display: flex;
             padding: 3% 0;
             width: 100%;
