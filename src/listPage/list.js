@@ -72,7 +72,7 @@ function CardList () {
             </div>
 
 
-            <div className='right'>
+            <div className='listRight'>
             {currentProducts.map (data => (
                 <div className='card'>
                     <img src={data.image} alt='image'  style={{objectFit: 'cover'}}  />
@@ -87,9 +87,9 @@ function CardList () {
                 </div>
             ))}
             <Pagination pagine={paginate} length={list.length} page={listPerPage} />
+            <Footer/>
 
             </div>
-            <Footer />
 
         </div>
     )
