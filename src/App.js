@@ -15,9 +15,6 @@ import Mahiya from './mahiya';
 
 function App() {
 
-  const bang = () => {
-    console.log('bang')
-  }
   
   
 
