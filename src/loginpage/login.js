@@ -83,8 +83,9 @@ function Login(props) {
                         <p> No account <Link to='/register'><b style={{color: '#20141D'}}> Sign Up! </b> </Link></p>
                         <p> Forgot Password </p>
                     </div>
+                    <Footer />
+
                 </div>
-                <Footer />
 
             </div>
     )
