@@ -7,24 +7,17 @@ import { useSpring, animated } from 'react-spring';
 import CloseIcon from '@material-ui/icons/Close';
 
 const Background = styled.div`
-    width: 50%;
-    height: 50%;
     position: fixed;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 
     @media only screen and (max-width: 600px) {
-        // border: solid red;
-        // width: 300px;
+        margin: 0 auto;
+        width: 90%;
         display: flex;
-        margin-left: 35px;
-        justify-content: center;
+        margin-left: 20px;
     }
 `;
 
 const ModalWrapper = styled.div`
-    margin: 0 auto;
     width: 600px;
     box-shadow: 0 5px 16px rgba(0, 0, 0, 0.2);
     background: #fff;
@@ -32,12 +25,9 @@ const ModalWrapper = styled.div`
     border: solid;
 
     @media only screen and (max-width: 600px) {
-        border: solid red;
-        width: 300px;
+        height: 500px;
         display: flex;
         justify-content: center;
-        margin-bottom: 90px;
-
     }
 
 `;
@@ -54,12 +44,9 @@ const ModalContent = styled.div`
 const CloseModalButton = styled(CloseIcon)`
     cursor: pointer;
     position: absolute;
-    top: 20px;
-    right: 20px;
-    width: 32px;
-    height: 32px;
-    padding: 0;
-    z-index: 10;
+    top: 10px;
+    right: 10px;
+    z-index: 1;
 `;
 
 
@@ -101,27 +88,27 @@ function PopUp ({popup, marketList, setPopUp}) {
     );
 
     return (
-        <>
+        <div className='marketPopUp'>
         {popup ? (
         
         <Background onClick={closePopUp} ref={popUpRef}>
             <animated.div style={animation}>
                 <ModalWrapper popup={popup}>
-                    <ModalContent>
-                        <h1> Price Comparison </h1>     
+                    <ModalContent >
+                        <h1 style={{margin: '0'}}> Price Comparison </h1>     
                         <h1> {popUpDescription} </h1>
-                        <p> Average Listing </p>
+                        <p style={{margin: '0'}}> Average Listing </p>
                         <h1> {popUpPrice} </h1> 
                         
-                        <div className='button'>
+                        <div className='popButton'>
                             <button>
-                                <Link to='/edit' style={{color: "white"}} >
+                                <Link to='/edit'>
                                     Update Price
                                 </Link>
                             </button>
                             
                             <button>
-                                <Link to='/' style={{color: 'white'}}>
+                                <Link to='/'>
                                     Home
                                 </Link>
                             </button>
@@ -134,7 +121,7 @@ function PopUp ({popup, marketList, setPopUp}) {
             </animated.div>
         </Background> 
         ) : null }
-        </>
+        </div>
     )
 }
 

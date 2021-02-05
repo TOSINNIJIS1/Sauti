@@ -1,60 +1,14 @@
-.popup {
-    background: white;
-    box-sizing: content-box;
-
-    margin: 0 auto;
-    text-align: center;
+.popButton {
+    width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
+    margin-bottom: 10%;
 
-    .popup-true {
-        border: solid black 1px;
-
-    }
-    .popupBg {
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.4s ease-in-out;
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        top: 0;
-        width: 40%;
-        // height: 70%;
+    button {
+        width: 100%;
         display: flex;
-        flex-direction: column;
-        margin: 0% auto;
-        justify-content: center;
-        align-content: center;
-        background: white;
-        margin: 7% auto;
-        margin-left: 44%;
+        justify-content: space-evenly;
+        margin: 0 2%;
+        padding: 3%;
     }
-
-    
-    .popup-true {
-        opacity: 1;
-        pointer-events: showing;
-        
-    }
-
-    .innerPopup {
-        
-        // width: 900px;
-        max-width: calc(100% - 60px);
-    }
-
-    .button {
-        padding: 0;
-
-        button {
-            border: solid red;
-            width: 100%;
-            max-width: 100%;
-            color: white;
-        }
-    }
-
-
 }

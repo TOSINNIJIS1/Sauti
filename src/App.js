@@ -27,11 +27,11 @@ function App() {
           <Route path='/register' render={() => <Registration />} />
           <Route path='/login' render={() => <Login  />} />
           <PrivateRoute path='/dashboard' component={ Dashboard } />
-          <Route path='/market' component={ Market} />
-          <Route path='/list' component={ ListProduct } />
-          <Route path='/profile' component = { Profile } />
-          <Route path='/product' component = { Product } />
-          <Route path='/mahiya' render={() => <Mahiya  />} />
+          <PrivateRoute path='/market' component={ Market} />
+          <PrivateRoute path='/list' component={ ListProduct } />
+          <PrivateRoute path='/profile/:id' component = { Profile } />
+          <PrivateRoute path='/product' component = { Product } />
+          <Route render={() => <Mahiya  />} />
         </Switch>
       </Router>
     </div>

@@ -6,18 +6,22 @@ import './styles/market.scss';
 import PopUp from './PopUp';
 import Signout from '../dashboard/signout'
 import axiosWithAuth from '../auth/authWithAuth'
+import Mahiya from '../mahiya'
+import axios from 'axios';
+
 
 
 function Market() {    
     const [marketCategory, setMarketCategory] = useState('')
+    const [notFound, setNotFound] = useState('')
+    console.log(notFound, 'notfound')
 
     const MarketCategoryOnChange = (e) => {
         setMarketCategory(e.target.value)
-        console.log('this is market category', marketCategory)
     }
 
     const [marketList, setMarketList] = useState([])
-    console.log(marketList, 'this is market')
+    console.log(marketList, 'my marketList')
 
     const MarketListOnSubmit = (e) => {
         e.preventDefault();
@@ -28,8 +32,8 @@ function Market() {
             headers: { "Authorization": `Bearer ${token}` }
         })
         .then((res) => {
+            console.log(res.data)
             const result = res.data
-            console.log(res)
 
             let filterMarketList = result.filter(products => {
                 let marketItemData = products.item.toString().toLowerCase();
@@ -38,8 +42,20 @@ function Market() {
                     
                 return marketItemData.includes(searchMarketItem.toLowerCase()) && marketCategoryData.includes(marketCategory.toLowerCase()) && marketLocationData.includes(searchMarketLocation.toLowerCase())
             })
-            setMarketList(filterMarketList)
-            openPopUp()
+
+            console.log(filterMarketList, 'filter')
+
+            if (filterMarketList) {
+                console.log(filterMarketList, 'filter')
+                setMarketList(filterMarketList)
+                openPopUp()
+            } else {
+                console.log(res)
+                setNotFound(res.data.message)
+                openPopUp()
+                
+                // <div> lol </div>  
+            }
         })
         .catch((error) => console.error(error))
     }
@@ -47,13 +63,11 @@ function Market() {
     const [ searchMarketItem, setSearchMarketItem ] = useState('');
     const MarketItemOnChange = (e) => {
         setSearchMarketItem(e.target.value)
-        console.log('this is market category', searchMarketItem)
     }
 
     const [ searchMarketLocation, setSearchMarketLocation] = useState('');
     const MarketLocationOnChange = (e) => {
         setSearchMarketLocation(e.target.value)
-        console.log('this is market category', searchMarketLocation)
     }
 
     const [popUp, setPopUp] = useState(false)
@@ -101,9 +115,19 @@ function Market() {
                     <NavAll />
 
                 <div className='marketRight' style={{marginTop: '10%'}}>
-                    
+                    <div id='popup'>
+                        <PopUp 
+                            popup={popUp} 
+                            setPopUp={setPopUp}
+                            marketList = {marketList} 
+                        />    
+                    </div>
+                  
                     <h1> Market Price Check </h1> 
                     
+
+                    { marketList
+                    ?
                     <form id='market'>
                         <label > Category </label>
                         <select name='category' value={marketCategory} onChange={MarketCategoryOnChange}>
@@ -136,11 +160,7 @@ function Market() {
 
                         />
 
-                        <PopUp 
-                        popup={popUp} 
-                        setPopUp={setPopUp}
-                        marketList = {marketList} 
-                        />                        
+                                           
                         
                         <button 
                         onClick={MarketListOnSubmit} 
@@ -149,6 +169,9 @@ function Market() {
                         
                         > Check Price </button> 
                     </form>
+                    : null }
+                    
+                    
                     <Footer />
 
                 </div>

@@ -1,3 +1,13 @@
+#popup {
+    width: 50%;
+    @media only screen and (max-width: 600px) {
+        width: 100%;
+        display: flex;
+        margin: 0 auto;
+    }
+}
+
+
 .marketRight {
     display: flex;
     flex-direction: column;

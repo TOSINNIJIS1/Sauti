@@ -1,14 +1,32 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../listPage/styles/list.scss';
 import './profile.scss'
 import ProfileImage from '../listPage/images/ayo-ogunseinde-UzSPiVmnkAA-unsplash.png'
-import {Link} from 'react-router-dom'
+import {Link, withRouter, useParams} from 'react-router-dom'
 import NavAll from '../NavForAll/NavAll';
 import Footer from '../footer/footer';
 import Signout from '../dashboard/signout'
+import axiosWithAuth from '../auth/authWithAuth';
+import axios from 'axios';
 
-export default function Profile () {
-    const [user] = useState(JSON.parse(localStorage.getItem('user')))
+
+function Profile (props) {
+    const [profile, useProfile] = useState([])
+
+
+    const ProfileOnclick = (id) => {
+        axios.get(`http://localhost:1000/api/users/allUser/${id}`)
+        .then(res => console.log(res.data))
+        .catch(error => console.log(error))
+    }
+
+    console.log(props.match.params.id, 'this is props')
+
+
+    const ProfilePage = event => {
+        event.preventDefault()
+        axiosWithAuth().get(profile)
+    }
 
     return (
         <div className='listContainer'>
@@ -51,31 +69,31 @@ export default function Profile () {
                 <form>
                     <label> Full Name </label>
                     <input
-                    value={user.fname}
+                    // value={user.fname}
                     />
 
                     <label> Phone </label>
                     <input 
-                    value={user.phone}
+                    // value={user.phone}
 
                     />
 
                     <label> Email </label>
                     <input 
-                    value={user.email}
+                    // value={user.email}
 
                     />
 
                     <label> Password </label>
                     <input 
                     type='password'
-                    value={user.password}
+                    // value={user.password}
                     
                     />
 
                     <label> Location </label>
                     <input 
-                    value={user.location}
+                    // value={user.location}
                     />
 
                     <div className='button'>
@@ -91,3 +109,5 @@ export default function Profile () {
         </div>
     )
 }
+
+export default withRouter(Profile)
