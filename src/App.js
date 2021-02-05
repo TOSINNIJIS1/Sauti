@@ -31,7 +31,7 @@ function App() {
           <PrivateRoute path='/list' component={ ListProduct } />
           <PrivateRoute path='/profile/:id' component = { Profile } />
           <PrivateRoute path='/product' component = { Product } />
-          <Route render={() => <Mahiya  />} />
+          {/* <Route render={() => <Mahiya  />} /> */}
         </Switch>
       </Router>
     </div>
