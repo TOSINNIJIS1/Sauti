@@ -6,9 +6,9 @@ import './styles/market.scss';
 import PopUp from './PopUp';
 import Signout from '../dashboard/signout'
 import axiosWithAuth from '../auth/authWithAuth'
-import Mahiya from '../mahiya'
 import axios from 'axios';
 
+let CATEGORIES = ['Clothes', 'Shoes', 'Shirt', 'Jewelries', 'Animal Products', 'Beans', 'Cereal', 'Fruits', 'Vegetables', 'Seeds & Nuts', 'Other', 'Peas', 'Roots & Tubers', 'Cereals']
 
 
 function Market() {    
@@ -28,9 +28,7 @@ function Market() {
         let token = localStorage.getItem('token')
 
 
-        axiosWithAuth().get('/products', {
-            headers: { "Authorization": `Bearer ${token}` }
-        })
+        axios.get('https://sauti-market-app.herokuapp.com/api/products')
         .then((res) => {
             console.log(res.data)
             const result = res.data
@@ -122,7 +120,7 @@ function Market() {
                             marketList = {marketList} 
                         />    
                     </div>
-                  
+                    
                     <h1> Market Price Check </h1> 
                     
 
@@ -131,16 +129,8 @@ function Market() {
                     <form id='market'>
                         <label > Category </label>
                         <select name='category' value={marketCategory} onChange={MarketCategoryOnChange}>
-                            <option value=""> Select Product </option>
-                            <option value="animal products"> Animal Products </option>
-                            <option value="beans"> Beans </option>
-                            <option value="cereals" > Cereals </option>
-                            <option value="fruits" > Fruits </option>
-                            <option value="vegetables"> Vegetables </option>
-                            <option value="seeds & nuts"> Seeds and Nuts </option>
-                            <option value="other"> Other </option>
-                            <option value="peas"> Peas </option>
-                            <option value="roots & tubers"> Roots and Tubers </option>
+                            <option > Select </option>
+                            {CATEGORIES.map((data, i) => <option key={i}> {data} </option> )}
                         </select>
 
                         <label> Items </label>

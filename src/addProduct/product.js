@@ -5,8 +5,9 @@ import {Link} from 'react-router-dom';
 import NavAll from '../NavForAll/NavAll'
 import Footer from '../footer/footer'
 import Signout from '../dashboard/signout';
-import axios from 'axios';
+import axiosWithAuth from '../auth/authWithAuth';
 import PopUp from './productPopUp';
+import axios from 'axios';
 
 let CATEGORIES = ['Clothes', 'Shoes', 'Shirt', 'Jewelries', 'Animal Products', 'Beans', 'Cereal', 'Fruits', 'Vegetables', 'Seeds & Nuts', 'Other', 'Peas', 'Roots & Tubers', 'Cereals']
 
@@ -27,6 +28,7 @@ function ProductInfo () {
         image: '',
     })
 
+
     const target = (e) => {
         return ({target: { value }}) => {
             setProduct((oldProduct) => (
@@ -37,14 +39,17 @@ function ProductInfo () {
 
     // Image start here
     const handleChange = e => {
-        setFileProduct({
-            preview: URL.createObjectURL(e.target.files[0]),
-            image: e.target.files[0]
-        })    
+            setFileProduct({
+                preview: URL.createObjectURL(e.target.files[0]),
+                image: e.target.files[0]
+            })   
+        
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        // imageRef.current.click()
         const token = localStorage.getItem('token');
 
         const formData = new FormData();
@@ -55,19 +60,15 @@ function ProductInfo () {
         formData.append("category", product.category);
         formData.append("location", product.location);
 
-        // for (let obj of formData) {
-        //     console.log(obj, 'obj of formData')
-        // }
 
-        const config = {
-            headers: {
-                // 'content-type': 'multipart/form-data',
-                'Authorization': `Bearer ${token}`,
-            }
-        };
 
-        axios.post('https://sauti-market-app.herokuapp.com/api/products/', formData, config ) 
+        for (let obj of formData) {
+            console.log(obj, 'obj of formData')
+        }
+
+        axios.post('https://sauti-market-app.herokuapp.com/api/products/', formData ) 
         .then(res => { 
+            console.log(res, 'data')
             setProductList(res.data); 
             openProductPopUp()
         })

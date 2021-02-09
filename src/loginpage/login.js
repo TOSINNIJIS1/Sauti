@@ -5,89 +5,78 @@ import NavAll from '../NavForAll/NavAll';
 import Footer from '../footer/footer'
 import { Link } from 'react-router-dom';
 // import Popup from './popup';
-import { withRouter } from 'react-router-dom';
-import axiosWithAuth from '../auth/authWithAuth';
-
-
+import { connect } from 'react-redux';
+import { loginUser } from '../redux'
 
 function Login(props) {
-    const [login, setLogin] = useState({
-        email: '',
-        password: ''
-    }) 
-    
-    const onSubmit = (e) => {
-        e.preventDefault()
+    console.log(props, 'this is the props')
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
 
-        axiosWithAuth().post('/users/login', login)
-        .then(res => {
-            console.log(res.data.token, 'welcome')            
-            if (res.status === 200) {
-                localStorage.setItem('token', res.data.token)
-                // localStorage.setItem('user', JSON.stringify(res.data.user))
-                props.history.push('/dashboard')
-            }
-        })
-        .catch(err => console.log(err))
-    }
 
-    const set = (e) => {
-        return ({ target: { value } }) => {
-            setLogin((oldLogin) => (
-                ({ ...oldLogin, [e]: value })
-            ))
-        }
-    }
 
     return (
-        // <div class='forFooter'>
-            <div className='logContainer'>
-                <div className='navReg'>
-                    <NavAll />
-                </div>
-                <Left />
+    <div className='logContainer'>
+        <div className='navReg'>
+            <NavAll />
+        </div>
+        
+        <Left />
 
-                <div className='registerRight'>
-                    <h1> Sign In </h1>
+        <div className='registerRight'>
+            <h1> Sign In </h1>
 
-                    <form onSubmit={onSubmit}>
-                        <label> Email </label>
-                        <input 
-                        type='email'
-                        name='email'
-                        required
-                        value={login.email}
-                        onChange={set('email')}
-                        />
+                <form >
+                    <label> Email </label>
+                    <input 
+                    type='email'
+                    name='email'
+                    required
+                    defaultValue={email}
+                    onChange={(e) => setEmail(e.target.value) }
+                    />
 
-                        <label> Password </label>
-                        <input
-                        type='password'
-                        name='pwd'
-                        required
-                        value={login.password}
-                        onChange={set('password')}
-                        />
-                        
-                        <button 
-                        disabled={!login.email || !login.password }
-                        // onClick={openPopup}
-                        > Sign In </button>
-                        {/* <Link to='/dashboard'>
-                            <button id='demo' > Demo Login </button>
-                        </Link> */}
-                        {/* <Popup popup={popup} setPopup={setPopup} /> */}
-                        <div className='else'>
-                            <p> No account <Link to='/register'><b style={{color: '#20141D'}}> Sign Up! </b> </Link></p>
-                            <p> Forgot Password </p>
-                        </div>
-                    </form>
-                </div>
-                <Footer />
-
-
+                    <label> Password </label>
+                    <input
+                    type='password'
+                    name='pwd'
+                    required
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value) }
+                    />
+                    
+                    <button 
+                    disabled={!email && !password }
+                    onClick={(e) => {
+                        e.preventDefault()
+                        props.loginUser(email, password)}
+                    }> Sign In </button>
+                    
+                    <div className='else'>
+                        <p> No account <Link to='/register'><b style={{color: '#20141D'}}> Sign Up! </b> </Link></p>
+                        <p> Forgot Password </p>
+                    </div>
+                </form>
             </div>
+            <Footer />
+        </div>
     )
 }
 
-export default withRouter(Login)
+const mapStatetoProps = (state) => {
+    return {
+        email:state.user.email,
+        password:state.user.password,
+        msg:state.user.msg
+    }
+}
+
+const mapDispatchtoProps=(dispatch)=>{
+    return {
+        loginUser:function(email, password) {
+            dispatch(loginUser(email, password));
+        },
+    }
+}
+
+export default connect(mapStatetoProps,mapDispatchtoProps)(Login);

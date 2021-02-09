@@ -7,8 +7,12 @@ import List from './assets/Listings Icon.svg';
 import Profile from './assets/Profile Icon.svg';
 import { withRouter } from 'react-router-dom';
 
-function Nav ({props}) {
-    console.log(props, 'this is the props')
+import {connect} from 'react-redux';
+import Signout from './signout';
+
+
+function Nav () {
+    // console.log(props, 'this is the props')
     
     return (
         <div className='navCont'>
@@ -16,25 +20,20 @@ function Nav ({props}) {
                 <Link to='/'>
                     <h1> Sauti. </h1>
                 </Link>
-                <p 
-                style={{cursor: 'pointer'}}
-                onClick={ 
-                    () => {
-                        localStorage.removeItem('token')
-                        props.history.push('/')
-                    }
-                }
-
-                > Sign Out </p>
+                <Signout />
             </nav>
         </div>
         
     )
 }
 
-function Header () {
+function Header (props) {
+    let name = props.props.userDetails.fname
+    name = name.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();})
 
-    return <div className='headerDash'> My Dashboard </div>
+    return <div className='headerDash' >  
+    {name} Dashboard
+    </div>
 }
 
 function Boards () {
@@ -103,15 +102,22 @@ function Footer () {
 
 function Dashboard (props) {
 
-
     return (
-        <div>
-            <Nav props={props} />
-            <Header />
+        <div className='dashboard'>
+            <Nav />
+            <Header props={props} />
             <Boards />
             <Footer />
         </div>
     )
 }
 
-export default withRouter(Dashboard)
+
+const mapStatetoProps=(state)=>{
+    return{
+        userDetails:state.user.userDetails,
+    }
+}
+
+
+export default connect(mapStatetoProps)(Dashboard);

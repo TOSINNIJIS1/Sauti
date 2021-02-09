@@ -4,10 +4,26 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import { Provider } from 'react-redux';
+import store from './redux/store';
+import Auth from './redux/action/Authorization/auth';
+import jwt from 'jsonwebtoken';
+import {setCurrentUser, logout} from "./redux";
+
+
+let token = localStorage.token
+
+if (token) {
+  Auth(token)
+  store.dispatch(setCurrentUser(jwt.decode(token)))
+}
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

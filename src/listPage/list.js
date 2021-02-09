@@ -6,6 +6,8 @@ import NavAll from '../NavForAll/NavAll';
 import Footer from '../footer/footer'
 import axiosWithAuth from '../auth/authWithAuth'
 import Pagination from '../pagination/pagination';
+import axios from 'axios';
+import Upload from './images/empty.jpg'
 
 function CardList () {
     const [ list, setList ] = useState([])
@@ -17,6 +19,14 @@ function CardList () {
     const indexOfFirstPost = indexOfLastPost - listPerPage;
     const currentProducts = list.slice(indexOfFirstPost, indexOfLastPost);
 
+    // let newImage = currentProducts.map(data => data.image)
+    // if (newImage) {
+    //     var imageFile = data.image
+    // } else {
+    //     imageFile = Upload
+    // }
+                // }
+
     const paginate = (pageNumber) => setCurrentPage(pageNumber)
 
     React.useEffect(() => {
@@ -24,16 +34,12 @@ function CardList () {
     },[])
 
     const GetRequest = () => {
-        let  token = localStorage.getItem('token')
-        axiosWithAuth().get('/products', {
-            headers: {
-                authorization: `Bearer ${token}`
-            }
-        })
+        axios.get('https://sauti-market-app.herokuapp.com/api/products/')
         .then(res => {
+            // console.log(res)
             setList(res.data)
         })
-        .catch(error => console.log(error))
+        .catch(error => error)
     }
 
 
@@ -74,6 +80,7 @@ function CardList () {
 
             <div className='listRight'>
             {currentProducts.map (data => (
+                
                 <div className='card'>
                     <img src={data.image} alt='image'  style={{objectFit: 'cover'}}  />
                     

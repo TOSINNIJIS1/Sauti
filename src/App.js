@@ -10,18 +10,17 @@ import Profile from './profile/profile';
 import Market from './marketPrices/market';
 import './listPage/styles/list.scss';
 import PrivateRoute from './auth/protectedRoute';
-import Mahiya from './mahiya';
+
 
 
 function App() {
 
-  
-  
 
   return (
     <div className='container'>
       {/* <SideNav /> */}
-      <Router>
+      {/* <ReduxAuth /> */}
+      <Router >
         <Switch>
           <Route exact path='/' render={() => <Landing />} />
           <Route path='/register' render={() => <Registration />} />
@@ -29,13 +28,13 @@ function App() {
           <PrivateRoute path='/dashboard' component={ Dashboard } />
           <PrivateRoute path='/market' component={ Market} />
           <PrivateRoute path='/list' component={ ListProduct } />
-          <PrivateRoute path='/profile/:id' component = { Profile } />
+          <PrivateRoute path='/profile' component = { Profile } />
           <PrivateRoute path='/product' component = { Product } />
-          {/* <Route render={() => <Mahiya  />} /> */}
+          <Route render={() => <h1> Not Found </h1>  } />
         </Switch>
       </Router>
     </div>
   );
 }
 
-export default App;
+export default App
