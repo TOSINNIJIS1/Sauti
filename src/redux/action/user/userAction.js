@@ -47,6 +47,7 @@ export const loginUser = (email, password) => {
             password: password
         })
         .then(res => {
+            console.log(res)
             const data = res.data.message;
 
             if (data === 'User Found') {
