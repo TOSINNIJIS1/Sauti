@@ -3,12 +3,12 @@ import './styles/register.scss';
 import Left from '../left/left';
 import NavAll from '../NavForAll/NavAll';
 import Footer from '../footer/footer'
-import { withRouter } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import axiosWithAuth from '../auth/authWithAuth';
 
 import { connect } from 'react-redux';
-import { registerUser } from '../redux';
-
+// import { registerUser } from '../redux';
+import axios from 'axios';
 
 function Register ({props}) {
     console.log(props)
@@ -19,17 +19,32 @@ function Register ({props}) {
     const [confirmPassword, setConfirmPassword] = useState('')
     const [location, setLocation] = useState('')
     const [image, setImage] = useState('')
+    const [imageUrl, setImageUrl] = useState('')
+    const [msg, setMsg] = useState('')
 
-    const imageOnChange = (e) => {
-        setImage(e.target.files[0])
-    }
+    let history = useHistory();
 
-    const imageOnSubmit = (e) => {
+    const registerSubmit = (e) => {
+
         e.preventDefault()
+        const formData = new FormData();
 
+        formData.append('fname', fname)
+        formData.append('email', email)
+        formData.append('password', password)
+        formData.append('confirmPassword', confirmPassword)
+        formData.append('phone', phone)
+        formData.append('location', location)
+        formData.append('image', image)
 
+        axios.post('http://localhost:1000/api/users/register', formData)
+        .then((res) => setMsg(res.data.message))
+        .catch(error => console.log(error, 'bang'))
     }
-
+    
+    if (msg === 'All good and ready to go')  {
+        history.push('/login')
+    }
 
     return (        
         <div className='regContainer'>
@@ -37,6 +52,7 @@ function Register ({props}) {
                 <NavAll />
             </div>
             <Left />
+            
             
 
             <div className='right'>
@@ -47,15 +63,24 @@ function Register ({props}) {
                     border: '1px solid black',
                     background: '#AA0114',
                     color: 'white'
-                    }}> {props.msg} </h1>
+                    }}> {msg} </h1>
 
-                <form >
+                <form encType='multipart/form-data' >
+
+                    <img src={image} alt='' />
+                    <label>Profile Image </label> 
+                    <input 
+                    type='file'
+                    name='image'
+                    onChange={(e) => setImage(e.target.files[0])}
+                    />
+
                     <label> Full Name </label>
                     <input
                     required
                     type='text'
                     placeholder='Your Full Name Here'
-                    defaultValue={props.fname}
+                    defaultValue={fname}
                     onChange={(e) => setFname(e.target.value)}
                     />
 
@@ -65,7 +90,7 @@ function Register ({props}) {
                     type='tel'
                     // pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}'
                     placeholder='Enter Phone Number'
-                    defaultValue={props.phone}
+                    defaultValue={phone}
                     onChange={(e) => setPhone(e.target.value)}
                     />
 
@@ -74,7 +99,7 @@ function Register ({props}) {
                     required
                     type='email'
                     placeholder='Your Email Here'
-                    defaultValue={props.email}
+                    defaultValue={email}
                     onChange={(e) => setEmail(e.target.value)}
                     />
                     
@@ -83,7 +108,7 @@ function Register ({props}) {
                     required
                     type='password'
                     placeholder='Password Here'
-                    defaultValue={props.password}
+                    defaultValue={password}
                     onChange={(e) => setPassword(e.target.value)}
                     />
 
@@ -92,7 +117,7 @@ function Register ({props}) {
                     required
                     type='password'
                     placeholder='Re-enter your Password Here'
-                    defaultValue={props.confirmPassword}
+                    defaultValue={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
 
                     // onChange={target('confirmpassword')}
@@ -103,25 +128,13 @@ function Register ({props}) {
                     required
                     type='text'
                     placeholder='Enter Location Here'
-                    defaultValue={props.location}
+                    defaultValue={location}
                     onChange={(e) => setLocation(e.target.value)}
                     />
 
-                    {/* <label> Profile Picture </label>
-                    <input 
-                    type='file'
-                    onChange={(e) => setImage(e.target.files[0])}
-
-                    /> */}
-
                     <button
-                    // disabled={!fname || !email || !phone || !password  || !location }
-                    onClick={(e) => {
-                        e.preventDefault()
-                        props.registerUser(fname, email, phone, password, confirmPassword, location)
-
-
-                    }}
+                    disabled={!fname || !email || !phone || !password  || !location }
+                    onClick={ registerSubmit}
                     > Sign Up </button>
                 </form>
             </div>
@@ -153,12 +166,5 @@ const mapStatetoProps = (state) => {
     }
 }
 
-const mapDispatchtoProps= (dispatch) => {
-    return {
-        registerUser: function (fname,phone,email,password, confirmPassword, location) {
-            dispatch(registerUser(fname,phone,email,password, confirmPassword, location));
-        },
-    }
-}
 
-export default connect(mapStatetoProps,mapDispatchtoProps)(Registration);
+export default connect(mapStatetoProps)(Registration);

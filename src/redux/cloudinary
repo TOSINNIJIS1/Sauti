@@ -1,0 +1,18 @@
+
+        // Cloudinary
+
+        // const data = new FormData()
+        // data.append('file', image)
+        // data.append('upload_preset', '')
+        // data.append('cloud_name', '')
+
+        // fetch('', {
+        //     method: 'post',
+        //     body: data
+        // })
+        // .then(res => res.json())
+        // .then(res => {
+        //     console.log(res, 'this is the image data')
+        //     setImageUrl(res.secure_url)
+        // })
+        // .catch(err => console.log(err, 'this is the image error'))

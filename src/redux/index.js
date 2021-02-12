@@ -7,7 +7,7 @@ export {
 } from './action/product/productAction';
 
 export {
-    registerUser,
+    // registerUser,
     loginUser,
     setCurrentUser,
     logout

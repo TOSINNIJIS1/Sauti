@@ -10,39 +10,38 @@ import jwt from "jsonwebtoken";
 import axios from 'axios'
 
 
-export const registerUser = (fname, email, phone, password, confirmPassword, location, image) => {
-    return function (dispatch) {
+// export const registerUser = (fname, email, phone, password, confirmPassword, location, image) => {
+//     return function (dispatch) {
 
-        axios.post('https://sauti-market-app.herokuapp.com/api/users/register', {
-            fname: fname,
-            email: email,
-            phone: phone,
-            password: password,
-            confirmPassword: confirmPassword,
-            location: location,
-            image: image
-        })
-        .then((res)=> {
-            console.log(res)
-            const message = res.data.message;
-            const token = res.data.token
-            dispatch({
-                type:SIGNUP_USER,
-                payload: message, token
-            })
-            if (message === "All good and ready to go")
-                window.location.href="/login";
+//         axios.post('http://localhost:1000/api/users/register', {
+//             fname: fname,
+//             email: email,
+//             phone: phone,
+//             password: password,
+//             confirmPassword: confirmPassword,
+//             location: location,
+//             image: image
+//         })
+//         .then((res)=> {
+//             console.log(res)
+//             const message = res.data.message;
+//             const token = res.data.token
+//             dispatch({
+//                 type:SIGNUP_USER,
+//                 payload: message, token
+//             })
+//             if (message === "All good and ready to go")
+//                 window.location.href="/login";
+//         })
 
-        })
-
-        .catch((err) => console.log(err))
-    }
+//         .catch((err) => console.log(err))
+//     }
     
-}
+// }
 
 export const loginUser = (email, password) => {
     return function (dispatch) {
-        axios.post('https://sauti-market-app.herokuapp.com/api/users/login', {
+        axios.post('http://localhost:1000/api/users/login', {
             email: email,
             password: password
         })

@@ -1,51 +1,57 @@
 import React, { useEffect, useState } from 'react';
 import '../listPage/styles/list.scss';
 import './profile.scss'
-import ProfileImage from '../listPage/images/ayo-ogunseinde-UzSPiVmnkAA-unsplash.png'
 import {Link, withRouter, useParams} from 'react-router-dom'
 import NavAll from '../NavForAll/NavAll';
 import Footer from '../footer/footer';
 import Signout from '../dashboard/signout'
-import axiosWithAuth from '../auth/authWithAuth';
 import axios from 'axios';
-import { connect } from 'react-redux';
 import Upload from '../addProduct/image/upload.png'
 
-function Profile (props) {
+function Profile () {
+    const 
+    const [profile, setProfile] = useState({
+        userId: props.id,
+        fname: props.fname,
+        phone: props.phone,
+        email: props.email,
+        password: props.password,
+        location: props.location,
+        msg: props.msg,
+    })
 
-    const [id, setId] = useState(props.id)
-    const [fname, setFname] = useState('')
-    const [phone, setPhone] = useState('')
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    const [location, setLocation] = useState('')
-    const [message, setMessage] = useState('')
-    const [image, setImage] = useState('')
-    const [upload, setUpload] = useState('')
-
+    var id = props.id
     console.log(id)
+    const [image, setImage] = useState({
+        image: props.image,
+        // upload: null
+    })
 
+    console.log(image.image, 'image')
 
     
     useEffect(() => {
-        console.log(id)
-        getDetails(id)
+        console.log(profile.id)
+        getDetails(profile.userId)
     },[])
 
 
-    const getDetails = (id) => {
-        axios.get(`http://localhost:1000/api/users/info/${id}`)
+    const getDetails = (userId) => {
+        axios.get(`http://localhost:1000/api/users/info/${userId}`)
         .then((res) => {
             console.log(res.data.data, 'line 41 data')
-            setFname(res.data.data.fname)
-            setPhone(res.data.data.phone)
-            setEmail(res.data.data.email)
-            setPassword(res.data.data.password)
-            setLocation(res.data.data.location)
-            setMessage(res.data.message)
-            setImage(res.data.data.image)
+            setProfile({
+                fname: res.data.data.fname,
+                phone: res.data.data.phone,
+                email: res.data.data.email,
+                password: res.data.data.password,
+                location: res.data.data.location,
+                msg: res.data.message,
             })
-
+            setImage({
+                image: res.data.data.image
+            })
+        })
         .catch((error) => console.log(error))
     }
     // For Image
@@ -54,29 +60,39 @@ function Profile (props) {
     const UpdateProfile = (e) => {
         e.preventDefault();
         const formData = new FormData();
-        formData.append('fname', fname)
-        formData.append('email', email)
-        formData.append('password', password)
-        formData.append('phone', phone)
-        formData.append('location', location)
+        formData.append('fname', profile.fname)
+        formData.append('email', profile.email)
+        formData.append('password', profile.password)
+        formData.append('confirmPassword', profile.confirmPassword)
+        formData.append('phone', profile.phone)
+        formData.append('location', profile.location)
         formData.append('image', image)
 
         
 
-        axios.put(`http://localhost:1000/api/users/update-profile/${id}`, formData)
-        .then(res => console.log(res, 'updated result'))
+        axios.patch(`http://localhost:1000/api/users/update-profile/${id}`, formData)
+        .then(res => {
+            console.log(res)
+            // setImage(
+            //     res.data.data.image
+            // )
+        })
         .catch(err => console.log(err))
+        
+        
+        
     }
     // Image ends here
     
     if(image){
         console.log(image,'this is the image')
-        var imageString = image;
+        var imageString = image.image;
     }else{
         imageString = Upload;
     }
 
-    console.log(imageString, 'line 79')
+    console.log(imageString, 'line 90')
+
 
     return (
         <div className='listContainer'>
@@ -122,36 +138,46 @@ function Profile (props) {
                     <label> Full Name </label>
                     <input
                     type='text'
-                    onChange={(e) => setFname(e.target.value)}
-                    value={fname}
+                    onChange={(e) => setProfile({
+                        fname: e.target.value
+                    })}
+                    value={profile.fname}
                     />
 
                     <label> Phone </label>
                     <input 
                     type='tel'
-                    value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
+                    value={profile.phone}
+                    onChange={(e) => setProfile({
+                        phone: e.target.value
+                    })}
                     />
 
                     <label> Email </label>
                     <input 
                     type='email'
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    value={profile.email}
+                    onChange={(e) => setProfile({
+                        email: e.target.value
+                    })}
                     />
 
                     <label> Password </label>
                     <input 
                     type='password'
-                    onChange={(e) => setPassword(e.target.value)}
-                    value={password}
+                    onChange={(e) => setProfile({
+                        password: e.target.value
+                    })}
+                    value={profile.password}
                     />
 
                     <label> Location </label>
                     <input 
                     type='text'
-                    onChange={(e) => setLocation(e.target.value)}
-                    value={location}
+                    onChange={(e) => ({
+                        location: e.target.value
+                    })}
+                    value={profile.location}
                     />
 
                     <label> Profile Image </label>
@@ -174,11 +200,5 @@ function Profile (props) {
     )
 }
 
-const mapStatetoProps = (state) => {
-    console.log(state)
-    return {
-        id: state.user.userDetails.id,
-    }
-}
 
-export default connect(mapStatetoProps)(Profile);
+export default Profile
