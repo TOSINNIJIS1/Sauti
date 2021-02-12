@@ -27,10 +27,7 @@ function Profile (props) {
 
 
     
-    useEffect(() => {
-        console.log(id)
-        getDetails(id)
-    },[])
+
 
 
     const getDetails = (id) => {
@@ -61,22 +58,30 @@ function Profile (props) {
         formData.append('location', location)
         formData.append('image', image)
 
-        
-
         axios.put(`http://localhost:1000/api/users/update-profile/${id}`, formData)
-        .then(res => console.log(res, 'updated result'))
+        .then(res => {
+            console.log(res, 'updated result')
+            getDetails(id)
+        })
         .catch(err => console.log(err))
     }
     // Image ends here
     
     if(image){
-        console.log(image,'this is the image')
         var imageString = image;
     }else{
         imageString = Upload;
     }
 
     console.log(imageString, 'line 79')
+
+
+    useEffect(() => {
+        console.log(id)
+        getDetails(id)
+        
+    },[])
+
 
     return (
         <div className='listContainer'>

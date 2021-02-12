@@ -43,7 +43,6 @@ function ProductInfo () {
                 preview: URL.createObjectURL(e.target.files[0]),
                 image: e.target.files[0]
             })   
-        
     };
 
     const handleSubmit = async (e) => {
