@@ -25,7 +25,7 @@ export const fetchProduct = (id) => {
     return function (dispatch) {
         axios.get('https://sauti-market-app.herokuapp.com/api/products'+id)
         .then((res) => {
-            console.log(res)
+            // console.log(res)
             const data = res.data;
             dispatch(getProduct(data));
         })

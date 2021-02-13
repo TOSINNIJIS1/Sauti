@@ -90,7 +90,7 @@ function PopUp ({productPopup, productList, setProductPopUp}) {
     const keyPress = useCallback( (e) => {
             if (e.key === 'Escape' && productPopup) {
             setProductPopUp(false);
-            console.log('I Press the escape key');
+            // console.log('I Press the escape key');
             }
         },
         [setProductPopUp, productPopup]

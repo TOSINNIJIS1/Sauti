@@ -19,6 +19,9 @@ function CardList () {
     const indexOfFirstPost = indexOfLastPost - listPerPage;
     const currentProducts = list.slice(indexOfFirstPost, indexOfLastPost);
 
+
+    
+
     // let newImage = currentProducts.map(data => data.image)
     // if (newImage) {
     //     var imageFile = data.image
@@ -36,7 +39,7 @@ function CardList () {
     const GetRequest = () => {
         axios.get('http://localhost:1000/api/products')
         .then(res => {
-            console.log(res)
+            // console.log(res)
             setList(res.data)
         })
         .catch(error => error)
@@ -82,12 +85,15 @@ function CardList () {
             {currentProducts.map (data => (
                 
                 <div className='card'>
+                    {/* {console.log(data,'data')} */}
                     <img src={data.image} alt='image'  style={{objectFit: 'cover'}}  />
                     
                     <div className='category'>
                         <h1> {data.category} {data.price} </h1>
                         <p> {data.item} </p>
-                        <Link to='/edit'>
+                        
+                        
+                        <Link to={`/edit/${data._id}`} >
                         <button> Edit </button>
                         </Link>
                     </div>
@@ -106,7 +112,6 @@ export default function ListProduct() {
     return (
         <div>
             <CardList />
-            {/* <Edit /> */}
         </div>
     )
 }

@@ -23,7 +23,7 @@ function Profile (props) {
     const [image, setImage] = useState('')
     const [upload, setUpload] = useState('')
 
-    console.log(id)
+    // console.log(id)
 
 
     
@@ -33,7 +33,7 @@ function Profile (props) {
     const getDetails = (id) => {
         axios.get(`http://localhost:1000/api/users/info/${id}`)
         .then((res) => {
-            console.log(res.data.data, 'line 41 data')
+            // console.log(res.data.data, 'line 41 data')
             setFname(res.data.data.fname)
             setPhone(res.data.data.phone)
             setEmail(res.data.data.email)
@@ -60,7 +60,7 @@ function Profile (props) {
 
         axios.put(`http://localhost:1000/api/users/update-profile/${id}`, formData)
         .then(res => {
-            console.log(res, 'updated result')
+            // console.log(res, 'updated result')
             getDetails(id)
         })
         .catch(err => console.log(err))
@@ -73,11 +73,11 @@ function Profile (props) {
         imageString = Upload;
     }
 
-    console.log(imageString, 'line 79')
+    // console.log(imageString, 'line 79')
 
 
     useEffect(() => {
-        console.log(id)
+        // console.log(id)
         getDetails(id)
         
     },[])

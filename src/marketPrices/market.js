@@ -14,14 +14,14 @@ let CATEGORIES = ['Clothes', 'Shoes', 'Shirt', 'Jewelries', 'Animal Products', '
 function Market() {    
     const [marketCategory, setMarketCategory] = useState('')
     const [notFound, setNotFound] = useState('')
-    console.log(notFound, 'notfound')
+    // console.log(notFound, 'notfound')
 
     const MarketCategoryOnChange = (e) => {
         setMarketCategory(e.target.value)
     }
 
     const [marketList, setMarketList] = useState([])
-    console.log(marketList, 'my marketList')
+    // console.log(marketList, 'my marketList')
 
     const MarketListOnSubmit = (e) => {
         e.preventDefault();
@@ -30,7 +30,7 @@ function Market() {
 
         axios.get('https://sauti-market-app.herokuapp.com/api/products')
         .then((res) => {
-            console.log(res.data)
+            // console.log(res.data)
             const result = res.data
 
             let filterMarketList = result.filter(products => {
@@ -41,14 +41,14 @@ function Market() {
                 return marketItemData.includes(searchMarketItem.toLowerCase()) && marketCategoryData.includes(marketCategory.toLowerCase()) && marketLocationData.includes(searchMarketLocation.toLowerCase())
             })
 
-            console.log(filterMarketList, 'filter')
+            // console.log(filterMarketList, 'filter')
 
             if (filterMarketList) {
-                console.log(filterMarketList, 'filter')
+                // console.log(filterMarketList, 'filter')
                 setMarketList(filterMarketList)
                 openPopUp()
             } else {
-                console.log(res)
+                // console.log(res)
                 setNotFound(res.data.message)
                 openPopUp()
                 

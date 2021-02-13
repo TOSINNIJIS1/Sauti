@@ -22,7 +22,7 @@ function ProductInfo () {
 
 
     const [ productList, setProductList ] = useState([])
-    console.log(productList, 'list')
+    // console.log(productList, 'list')
     
     const [fileProduct, setFileProduct] = useState({
         image: '',
@@ -61,13 +61,13 @@ function ProductInfo () {
 
 
 
-        for (let obj of formData) {
-            console.log(obj, 'obj of formData')
-        }
+        // for (let obj of formData) {
+        //     // console.log(obj, 'obj of formData')
+        // }
 
         axios.post('https://sauti-market-app.herokuapp.com/api/products/', formData ) 
         .then(res => { 
-            console.log(res, 'data')
+            // console.log(res, 'data')
             setProductList(res.data); 
             openProductPopUp()
         })

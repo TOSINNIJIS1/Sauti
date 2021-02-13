@@ -10,6 +10,8 @@ import Profile from './profile/profile';
 import Market from './marketPrices/market';
 import './listPage/styles/list.scss';
 import PrivateRoute from './auth/protectedRoute';
+import Edit from './listPage/edit';
+import Soon from './registerpage/comingSoon/soon';
 
 
 
@@ -30,7 +32,8 @@ function App() {
           <PrivateRoute path='/list' component={ ListProduct } />
           <PrivateRoute path='/profile' component = { Profile } />
           <PrivateRoute path='/product' component = { Product } />
-          <Route render={() => <h1> Not Found </h1>  } />
+          <PrivateRoute exact path='/edit/:id' component = { Edit } />
+          <Route render={() => <Soon />  } />
         </Switch>
       </Router>
     </div>

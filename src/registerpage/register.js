@@ -11,7 +11,7 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 
 function Register ({props}) {
-    console.log(props)
+    // console.log(props)
     const [fname, setFname] = useState('')
     const [email, setEmail] = useState('')
     const [phone, setPhone] = useState('')

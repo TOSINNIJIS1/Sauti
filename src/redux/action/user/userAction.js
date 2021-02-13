@@ -46,17 +46,17 @@ export const loginUser = (email, password) => {
             password: password
         })
         .then(res => {
-            console.log(res)
+            // console.log(res)
             const data = res.data.message;
 
             if (data === 'User Found') {
                 const token = res.data.token;
                 localStorage.setItem("token", token);
-                console.log(token)
+                // console.log(token)
 
                 Auth(token);
                 dispatch(setCurrentUser(jwt.decode(token)));
-                console.log(jwt.decode(token))
+                // console.log(jwt.decode(token))
                 dispatch({
                     type: LOGIN_USER,
                     payload: data,
@@ -78,7 +78,7 @@ export const loginUser = (email, password) => {
 }
 
 export const setCurrentUser = (user) => {
-    console.log(user, 'user')
+    // console.log(user, 'user')
     return {
         type: SET_CURRENT_USER,
         payload: user

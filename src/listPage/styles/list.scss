@@ -3,6 +3,7 @@
 .listContainer { 
     display: flex;
     height: 100vh ;
+    
     // width: 50%;
 
 
@@ -134,15 +135,38 @@
             display: flex;
             align-items: center;
             width: 100%;
+
+            .editImg {
+                object-fit: cover;
+                margin: 0 auto;
+                justify-content: center;
+
+                // border: 1px solid #FE7A7C;
+                // box-sizing: border-box;
+                // border-radius: 30px;
+            }
             
 
             img {
+                border: 1px solid #FE7A7C;
+                // box-sizing: border-box;
+                // border-radius: 60px;
+                // display: flex;
+                // width: 10%;
+                // justify-content: center;
+                margin: 0 auto;
+                text-align: center;
+                border-top-left-radius: 20rem;
+                border-bottom-left-radius: 20em;
 
-                width: 100%;
-                margin-top: 10%;
-                height: 32vh;
-                box-sizing: border-box;
-                margin-left: 20%;
+                border-top-right-radius: 20rem;
+                border-bottom-right-radius: 20em;
+
+                // width: 100%;
+                // margin-top: 10%;
+                height: 33vh;
+                // box-sizing: border-box;
+                // margin-left: 20%;
             }
             
             .form {
@@ -162,6 +186,18 @@
                         line-height: 24px;
                         color: #20141D;
                         margin-bottom: 2%;
+                    }
+
+                    select {
+                        background: #FFFFFF;
+                        box-sizing: border-box;
+                        border-radius: 5px;
+                        font-weight: 300;
+                        font-size: 20px;
+                        line-height: 24px;
+                        color: #20141D;
+                        margin-bottom: 2%;
+
                     }
 
 
@@ -289,6 +325,15 @@
         line-height: 36px;
         margin-bottom: 5%;
     }
+
+    .edit {
+        .editPhoto {
+            display: none;
+        }
+    }
 }
+
+
+
 
 

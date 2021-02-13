@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 
 function ReduxAuth(props) {
     
-    console.log(localStorage.token)
+    // console.log(localStorage.token)
     if (localStorage.token) {
         Auth(localStorage.token);
         
@@ -16,7 +16,7 @@ function ReduxAuth(props) {
             if(err) {
             store.dispatch(logout());
             } else {
-            console.log(decode, 'this is decode');
+            // console.log(decode, 'this is decode');
             store.dispatch(setCurrentUser(decode));
         }
         })
