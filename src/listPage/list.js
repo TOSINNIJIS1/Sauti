@@ -8,6 +8,8 @@ import axiosWithAuth from '../auth/authWithAuth'
 import Pagination from '../pagination/pagination';
 import axios from 'axios';
 import Upload from './images/empty.jpg'
+import Signout from '../dashboard/signout'
+
 
 function CardList () {
     const [ list, setList ] = useState([])
@@ -37,7 +39,7 @@ function CardList () {
     },[])
 
     const GetRequest = () => {
-        axios.get('http://localhost:1000/api/products')
+        axios.get('https://sauti-market-app.herokuapp.com/api/products')
         .then(res => {
             // console.log(res)
             setList(res.data)
@@ -77,7 +79,7 @@ function CardList () {
                     </Link>
                 </nav>
 
-                <p> Sign Out </p>
+                <Signout />
             </div>
 
 

@@ -149,8 +149,6 @@ function Market() {
                         value={searchMarketLocation}
 
                         />
-
-                                           
                         
                         <button 
                         onClick={MarketListOnSubmit} 

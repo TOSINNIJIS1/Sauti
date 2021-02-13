@@ -41,7 +41,7 @@ import axios from 'axios'
 
 export const loginUser = (email, password) => {
     return function (dispatch) {
-        axios.post('http://localhost:1000/api/users/login', {
+        axios.post('https://sauti-market-app.herokuapp.com/api/users/login', {
             email: email,
             password: password
         })

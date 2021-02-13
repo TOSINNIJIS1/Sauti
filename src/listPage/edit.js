@@ -6,6 +6,8 @@ import Footer from '../footer/footer';
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import './styles/list.scss'
+import Signout from '../dashboard/signout'
+
 
 
 let CATEGORIES = ['Clothes', 'Shoes', 'Shirt', 'Jewelries', 'Animal Products', 'Beans', 'Cereal', 'Fruits', 'Vegetables', 'Seeds & Nuts', 'Other', 'Peas', 'Roots & Tubers', 'Cereals']
@@ -27,7 +29,7 @@ function Edit() {
     },[])
 
     const getProduct = (id) => {
-        axios.get(`http://localhost:1000/api/products/${id}`)
+        axios.get(`https://sauti-market-app.herokuapp.com/api/products/${id}`)
         .then(response => {
             setLocation(response.data.location)
             setDescription(response.data.description)
@@ -53,7 +55,7 @@ function Edit() {
         formData.append('image', image)
 
 
-        axios.put(`http://localhost:1000/api/products/${id}`, formData)
+        axios.put(`https://sauti-market-app.herokuapp.com/api/products/${id}`, formData)
         .then(response => { 
             // console.log(response)
             getProduct(id) 
@@ -85,15 +87,15 @@ function Edit() {
                     </Link>
 
                     <Link to='/profile'>
-                        <h4 style={{color: 'white'}} link to='/profile'> Profile </h4>
+                        <h4> Profile </h4>
                     </Link>
                     
                     <Link to='/add'>
-                        <h4 link to='add'> Add Product </h4>
+                        <h4> Add Product </h4>
                     </Link>
                 </nav>
 
-                    <p> Sign Out </p>
+                    <Signout />
                 </div>
                 <NavAll />
 

@@ -31,7 +31,7 @@ function Profile (props) {
 
 
     const getDetails = (id) => {
-        axios.get(`http://localhost:1000/api/users/info/${id}`)
+        axios.get(`https://sauti-market-app.herokuapp.com/api/users/info/${id}`)
         .then((res) => {
             // console.log(res.data.data, 'line 41 data')
             setFname(res.data.data.fname)
@@ -58,7 +58,7 @@ function Profile (props) {
         formData.append('location', location)
         formData.append('image', image)
 
-        axios.put(`http://localhost:1000/api/users/update-profile/${id}`, formData)
+        axios.put(`https://sauti-market-app.herokuapp.com/api/users/update-profile/${id}`, formData)
         .then(res => {
             // console.log(res, 'updated result')
             getDetails(id)
