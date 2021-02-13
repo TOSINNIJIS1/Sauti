@@ -138,6 +138,7 @@ function Register ({props}) {
                     > Sign Up </button>
                 </form>
             </div>
+            <Footer />
         </div>
     )
 }
@@ -147,7 +148,6 @@ function Registration (props) {
     return (
         <div className='regFooter'>
             <Register props={props} />
-            <Footer />
 
         </div>
     )
