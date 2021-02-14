@@ -28,7 +28,7 @@ function Nav () {
 }
 
 function Header (props) {
-    console.log(props, 'this is the props')
+    // console.log(props, 'this is the props')
     let name = props.props.userDetails.fname
     name = name.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();})
 

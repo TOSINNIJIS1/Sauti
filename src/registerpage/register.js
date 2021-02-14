@@ -5,10 +5,15 @@ import NavAll from '../NavForAll/NavAll';
 import Footer from '../footer/footer'
 import { useHistory } from 'react-router-dom'
 import axiosWithAuth from '../auth/authWithAuth';
+import PhoneInput from 'react-phone-number-input'
+
 
 import { connect } from 'react-redux';
 // import { registerUser } from '../redux';
 import axios from 'axios';
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Register ({props}) {
     // console.log(props)
@@ -19,79 +24,18 @@ function Register ({props}) {
     const [confirmPassword, setConfirmPassword] = useState('')
     const [location, setLocation] = useState('')
     const [image, setImage] = useState('')
-    const [imageUrl, setImageUrl] = useState('')
     const [msg, setMsg] = useState('')
-
-    // for error
-    const [emailError, setEmailError] = useState('')
-    const [fnameError, setFnameError] = useState('')
-    const [phoneError, setPhoneError] = useState('')
-    const [passwordError, setPasswordError] = useState('')
-    const [confirmPasswordError, setConfirmPasswordError] = useState('')
-    const [locationError, setLocationError] = useState('')
-    const [imageError, setImageError] = useState('')
-    const [imageUrlError, setImageUrlError] = useState('')
-    const [msgError, setMsgError] = useState('')
-
-
-
 
     let history = useHistory();
 
 
     let validate = (email) => {
-
         let emailError = ""
         if (!email.includes('@')) {
-            emailError = "Invalid Email"
-        }
-        if (emailError) {
-            setEmailError({ emailError })
+            toast("Invalid Email")
             return false
         }
-
-        let fnameError = ""
-
-        if (fname.length < 5) {
-            console.log(fname.length)
-            fnameError = "Fullname is too low"
-        }
-
-        if (fnameError) {
-            setFnameError ({ fnameError }) 
-
-            return false
-        }
-
-        let phoneError = ''
-
-        if (typeof phone === 'number') {
-            console.log('phone')
-            phoneError = 'Phone Number Cannot Be Text'
-        }
-
-        if (phoneError) {
-            setPhoneError ({ phoneError })
-
-            return false
-        }
-
-
-        // let fnameError = ""
-
-        // if (!fname.length < 0) {
-        //     fnameError = "Name Cannot Be Blank"
-        // }
-
-        // if (fnameError) {
-        //     setFnameError ({ fname }) 
-
-        //     return false
-        // }
-
-
         return true
-
     }
     
 
@@ -113,14 +57,22 @@ function Register ({props}) {
             formData.append('location', location)
             formData.append('image', image)
 
-            axios.post('http:// https://sauti-market-app.herokuapp.com/api/users/register', formData)
-            .then((res) => setMsg(res.data.message))
-            .catch(error => console.log(error, 'bang'))
+            axios.post('https://sauti-market-app.herokuapp.com/api/users/register', formData)
+            .then((res) => {
+                console.log(res)
+                toast(res.data.message)
+                setMsg(res.data.message)
+            
+            })
+                
+            .catch(error => toast(error, 'bang'))
         }
     }
     
     if (msg === 'All good and ready to go')  {
-        history.push('/login')
+        setTimeout(() => {
+            history.push('/login')
+        }, 5000)
     }
 
     return (        
@@ -134,19 +86,8 @@ function Register ({props}) {
 
             <div className='right'>
                 <h1> Create Account </h1>
-                <h1 style={{
-                    margin: '0 auto',
-                    width: '99%',
-                    border: '1px solid black',
-                    background: '#AA0114',
-                    color: 'white'
-                    }}> 
-                    {msg} 
-                    {emailError.emailError} 
-                    {fnameError.fnameError}
-                    {phoneError.phoneError}
+                <ToastContainer />
 
-                </h1>
                 {/* <div style={{
                     margin: '0 auto',
                     width: '99%',
@@ -159,7 +100,8 @@ function Register ({props}) {
                 <form encType='multipart/form-data' >
 
                     <img src={image} alt='' />
-                    <label>Profile Image </label> 
+                    
+                    <label> Profile Image </label> 
                     <input 
                     type='file'
                     name='image'
@@ -176,14 +118,18 @@ function Register ({props}) {
                     />
 
                     <label> Phone </label>
-                    <input
+                    <div className='phoneForm' style={{display: 'flex', fontSize: '1px'}}>
+                    <PhoneInput
                     required
-                    type='tel'
+                    // type='tel'
                     // pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}'
+                    defaultCountry="US"
                     placeholder='Enter Phone Number'
                     defaultValue={phone}
-                    onChange={(e) => setPhone(e.target.value)}
+                    onChange={setPhone}
                     />
+                    </div>
+
 
                     <label> Email </label>
                     <input 

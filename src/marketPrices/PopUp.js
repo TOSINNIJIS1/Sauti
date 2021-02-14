@@ -102,8 +102,8 @@ function PopUp ({popup, marketList, setPopUp}) {
                         
                         <div className='popButton'>
                             <button>
-                                <Link to='/edit'>
-                                    Update Price
+                                <Link to='/list'>
+                                    Products
                                 </Link>
                             </button>
                             

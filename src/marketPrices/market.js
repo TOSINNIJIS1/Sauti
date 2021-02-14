@@ -30,8 +30,8 @@ function Market() {
 
         axios.get('https://sauti-market-app.herokuapp.com/api/products')
         .then((res) => {
-            // console.log(res.data)
-            const result = res.data
+            // console.log(res)
+            const result = res.data.products
 
             let filterMarketList = result.filter(products => {
                 let marketItemData = products.item.toString().toLowerCase();

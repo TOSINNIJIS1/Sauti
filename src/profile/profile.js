@@ -11,6 +11,10 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import Upload from '../addProduct/image/upload.png'
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
 function Profile (props) {
 
     const [id, setId] = useState(props.id)
@@ -33,7 +37,7 @@ function Profile (props) {
     const getDetails = (id) => {
         axios.get(`https://sauti-market-app.herokuapp.com/api/users/info/${id}`)
         .then((res) => {
-            // console.log(res.data.data, 'line 41 data')
+            // console.log(res.data, 'line 41 data')
             setFname(res.data.data.fname)
             setPhone(res.data.data.phone)
             setEmail(res.data.data.email)
@@ -43,7 +47,7 @@ function Profile (props) {
             setImage(res.data.data.image)
             })
 
-        .catch((error) => console.log(error))
+        .catch((error) => toast(error))
     }
     // For Image
 
@@ -60,10 +64,10 @@ function Profile (props) {
 
         axios.put(`https://sauti-market-app.herokuapp.com/api/users/update-profile/${id}`, formData)
         .then(res => {
-            // console.log(res, 'updated result')
+            toast(res.data)
             getDetails(id)
         })
-        .catch(err => console.log(err))
+        .catch(err => toast(err))
     }
     // Image ends here
     
@@ -73,7 +77,6 @@ function Profile (props) {
         imageString = Upload;
     }
 
-    // console.log(imageString, 'line 79')
 
 
     useEffect(() => {
@@ -122,6 +125,8 @@ function Profile (props) {
                         objectFit: 'cover'
                     }} />
                 </div>
+                <ToastContainer />
+
                 
                 <form encType='multipart/form-data'>
                     <label> Full Name </label>
@@ -180,7 +185,6 @@ function Profile (props) {
 }
 
 const mapStatetoProps = (state) => {
-    console.log(state)
     return {
         id: state.user.userDetails.id,
     }

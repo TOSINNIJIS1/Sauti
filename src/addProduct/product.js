@@ -9,6 +9,9 @@ import axiosWithAuth from '../auth/authWithAuth';
 import PopUp from './productPopUp';
 import axios from 'axios';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 let CATEGORIES = ['Clothes', 'Shoes', 'Shirt', 'Jewelries', 'Animal Products', 'Beans', 'Cereal', 'Fruits', 'Vegetables', 'Seeds & Nuts', 'Other', 'Peas', 'Roots & Tubers', 'Cereals']
 
 function ProductInfo () {
@@ -68,10 +71,11 @@ function ProductInfo () {
         axios.post('https://sauti-market-app.herokuapp.com/api/products/', formData ) 
         .then(res => { 
             // console.log(res, 'data')
-            setProductList(res.data); 
+            toast(res.data.message)
+            setProductList(res.data.data); 
             openProductPopUp()
         })
-        .catch(error => console.log(error, 'big bang'))
+        .catch(error => toast(error))
     }
 
     const [productPopUp, setProductPopUp] = useState(false)
@@ -118,6 +122,8 @@ function ProductInfo () {
                 </div>
     
                 <div className='right'>
+                <ToastContainer />
+
                     <form enctype="multipart/form-data"> 
                         <label> Location </label>
                         <input required

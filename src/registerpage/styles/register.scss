@@ -1,3 +1,75 @@
+
+.PhoneInput {
+	display: flex;
+    width: 100vh;
+
+    
+    
+}
+
+.PhoneInputCountryIcon {
+    margin: 0;
+	width: 5vh;
+	height: 5vh;
+    
+}
+
+.PhoneInputInput {
+    width: 100vh;
+}
+
+
+
+.PhoneInputCountryIconImg {
+	/* Fixes weird vertical space above the flag icon. */
+	/* https://gitlab.com/catamphetamine/react-phone-number-input/-/issues/7#note_348586559 */
+	display: block;
+	/* 3rd party <SVG/> flag icons won't stretch if they have `width` and `height`.
+	   Also, if an <SVG/> icon's aspect ratio was different, it wouldn't fit too. */
+	width: 100%;
+	height: 100%;
+}
+
+
+
+/* Styling native country `<select/>`. */
+
+.PhoneInputCountry {
+	position: relative;
+	align-self: stretch;
+	display: flex;
+	align-items: center;
+	margin-right: var(--PhoneInputCountrySelect-marginRight);
+}
+
+.PhoneInputCountrySelect {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	z-index: 1;
+	border: 0;
+	opacity: 0;
+	cursor: pointer;
+}
+
+
+.PhoneInputCountrySelectArrow {
+    margin-left: 10%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 .regContainer {
     display: flex;
     max-width: 100%;

@@ -41,8 +41,7 @@ function CardList () {
     const GetRequest = () => {
         axios.get('https://sauti-market-app.herokuapp.com/api/products')
         .then(res => {
-            // console.log(res)
-            setList(res.data)
+            setList(res.data.products)
         })
         .catch(error => error)
     }

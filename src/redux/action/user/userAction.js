@@ -4,6 +4,8 @@ import {
     SET_CURRENT_USER,
     LOGOUT_USER
 } from './userType';
+import { toast } from 'react-toastify';
+
 
 import Auth from "../Authorization/auth";
 import jwt from "jsonwebtoken";
@@ -47,12 +49,17 @@ export const loginUser = (email, password) => {
         })
         .then(res => {
             // console.log(res)
+            setTimeout(() => {
+                toast (res.data.message)
+            },2000)
             const data = res.data.message;
+            
 
             if (data === 'User Found') {
                 const token = res.data.token;
                 localStorage.setItem("token", token);
                 // console.log(token)
+
 
                 Auth(token);
                 dispatch(setCurrentUser(jwt.decode(token)));
@@ -62,6 +69,8 @@ export const loginUser = (email, password) => {
                     payload: data,
                     isLoggedIn: true
                 })
+
+                // toast(data)
                 if (token) 
                     window.location.href="/dashboard";
 

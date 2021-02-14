@@ -8,6 +8,10 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { loginUser } from '../redux'
 
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+
 function Login(props) {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -23,14 +27,10 @@ function Login(props) {
         <Left />
 
         <div className='registerRight'>
+
+        <ToastContainer />
+
             <h1> Sign In </h1>
-            <h1 style={{
-                    margin: '0 auto',
-                    width: '99%',
-                    border: '1px solid black',
-                    background: '#AA0114',
-                    color: 'white'
-                    }}> {props.msg} </h1>
 
                 <form >
                     <label> Email </label>
