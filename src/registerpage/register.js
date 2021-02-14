@@ -113,7 +113,7 @@ function Register ({props}) {
             formData.append('location', location)
             formData.append('image', image)
 
-            axios.post('http://localhost:1000/api/users/register', formData)
+            axios.post('http:// https://sauti-market-app.herokuapp.com/api/users/register', formData)
             .then((res) => setMsg(res.data.message))
             .catch(error => console.log(error, 'bang'))
         }
